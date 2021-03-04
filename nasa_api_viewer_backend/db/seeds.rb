@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Users.delete_all
+birthdayvalue = Time.now()-100000000
+user1 = User.create(email: "bob@test.com",name: "Bob",birthday: birthdayvalue)
