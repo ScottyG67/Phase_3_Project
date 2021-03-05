@@ -1,54 +1,59 @@
 console.log("java index loaded")
-let SEARCH_TERM = `nebula`
+const NASA_URL = 'https://images-api.nasa.gov/search?q='
 const BASE_URL = "http://localhost:3000/"
 const USERS_URL = `${BASE_URL}users/`
 const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    console.log("DOM Loaded")
+    document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
+    // console.log("DOM Loaded")
     // init()
     apodFetch()
-    marsFetch()
+    // marsFetch()
     fetchNasaImages()
+    
 })
 
 function init() {
     fetch(USERS_URL+"1").then(res => res.json()).then(console.log)
 }
-
 function apodFetch(){
     fetch("https://api.nasa.gov/planetary/apod?api_key="+NASA_API_KEY).then(res =>res.json()).then(img => renderApod(img))
-}
-function epicFetch(){
-    fetch("https://api.nasa.gov/EPIC/api/natural/images?api_key="+NASA_API_KEY).then(res =>res.json()).then(epicData => renderEpic(epicData))
 }
 function marsFetch(){
     fetch("https://api.nasa.gov/insight_weather/?api_key="+NASA_API_KEY+"&feedtype=json&ver=1.0").then(res =>res.json()).then(marsData => renderMars(marsData))
     // https://api.nasa.gov/insight_weather/?api_key=nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN&feedtype=json&ver=1.0
 }
-function fetchNasaImages(searchTerm="https://images-api.nasa.gov/search?q=nebula"){
-    fetch(searchTerm).then(res => res.json()).then(stuff => stuff.collection.items.forEach(renderNasaImages))
-                     // search term goes after q ^
+function fetchNasaImages(searchTerm="nebula"){
+    fetch(NASA_URL+searchTerm).then(res => res.json()).then(stuff => stuff.collection.items.forEach(renderNasaImages))
 }
-
-function searchNasaApi(event) {
-    document.querySelector('nasa-image-search').addEventListener('submit', fetchNasaImages)
-        event.target.value
-
-}
-
+// doesn't work :(
+// function searchNasaApi(event) {
+//     event.preventDefault()
+//     let search = {
+//         text: event.target.text.value
+//     }
+//     const reqObj = {
+//     headers: {'Content-Type': 'application/json'},
+//     method: 'POST',
+//     body: JSON.stringify(search)
+//     }
+//     // console.log(reqObj)
+//     fetch(NASA_URL, reqObj)
+//     .then(r => r.json())
+//     .then(console.log)
+      
+// }
 
 function renderNasaImages(nasaImages) {
     const nasaImageContainer = document.querySelector('.nasaImages')
+    
     const nasaImg = document.createElement('img')
-        // nasaImg.dataset.id = 
         nasaImg.src = nasaImages.links[0].href
+    
     const nasaTitle = document.createElement('h5')
         nasaTitle.innerText = nasaImages.data[0].title
-        // nasaLinks.dataset.id = 
-    // console.log(nasaImages.links[0].href) //image.jpg
-    // console.log(nasaImages.data[0].title) //title
-    // console.log(nasaImages.links[0])
+
     nasaImageContainer.append(nasaImg, nasaTitle)
 }
 
@@ -58,15 +63,8 @@ function renderApod(img){
     apodImage.src = img.url
     apodContainer.append(apodImage)
 }
-function renderEpic(epicData){
-    const epicContainer = document.querySelector('.epic')
-    const epicImage = document.createElement('img')
-    // epicImage.src = epicData[0].image+'.png'
-    // console.log(epicData)
-    // console.log(epicData[0].image+'.png')
-    epicContainer.append(epicImage)
-}
-function renderMars(marsData){
-    const marsContainer = document.querySelector('.mars')
-    // marsData.forEach(sol => console.log(sol))
-}
+
+// function renderMars(marsData){
+//     const marsContainer = document.querySelector('.mars')
+//     marsData.forEach(sol => console.log(sol))
+// }
