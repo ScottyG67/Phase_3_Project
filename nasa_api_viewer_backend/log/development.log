@@ -1,155 +1,1232 @@
-  [1m[35m (5.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
-  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+DEPRECATION WARNING: [] is deprecated and will be removed from Rails 6.2 (Use configs_for) (called from migration_template at (erb):6)
+DEPRECATION WARNING: [] is deprecated and will be removed from Rails 6.2 (Use configs_for) (called from migration_template at (erb):6)
+DEPRECATION WARNING: [] is deprecated and will be removed from Rails 6.2 (Use configs_for) (called from <main> at /Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/bin/rails:5)
+DEPRECATION WARNING: [] is deprecated and will be removed from Rails 6.2 (Use configs_for) (called from <main> at /Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/bin/rails:5)
+DEPRECATION WARNING: [] is deprecated and will be removed from Rails 6.2 (Use configs_for) (called from <main> at /Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/bin/rails:5)
+DEPRECATION WARNING: [] is deprecated and will be removed from Rails 6.2 (Use configs_for) (called from <main> at /Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/bin/rails:5)
+DEPRECATION WARNING: [] is deprecated and will be removed from Rails 6.2 (Use configs_for) (called from <main> at /Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/bin/rails:5)
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateUsers (20210304165401)
+Migrating to DeviseCreateUsers (20210304222400)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "birthday" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210304165401"]]
-  [1m[36mTRANSACTION (14.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210304222400"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Create (2.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-04 16:57:48.935612"], ["updated_at", "2021-03-04 16:57:48.935612"]]
-  [1m[36mTRANSACTION (26.5ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (15.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-04 22:31:36.975476"], ["updated_at", "2021-03-04 22:31:36.975476"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mUser Create (9.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "birthday", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "bob@test.com"], ["name", "Bob"], ["birthday", "2021-03-03 13:13:42.355860"], ["created_at", "2021-03-04 17:00:22.402659"], ["updated_at", "2021-03-04 17:00:22.402659"]]
-  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (4.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[36mUser Load (8.0ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
-Started GET "/" for ::1 at 2021-03-04 11:16:48 -0600
-  [1m[35m (17.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-03-04 20:05:05 -0600
+  [1m[35m (5.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by Rails::WelcomeController#index as HTML
   Rendering /Users/Scott/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /Users/Scott/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 150.4ms | Allocations: 480)
-Completed 200 OK in 318ms (Views: 184.2ms | ActiveRecord: 0.0ms | Allocations: 4150)
+  Rendered /Users/Scott/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 60.6ms | Allocations: 480)
+Completed 200 OK in 138ms (Views: 84.0ms | ActiveRecord: 0.0ms | Allocations: 4174)
 
 
-Started GET "/users" for ::1 at 2021-03-04 11:16:56 -0600
-Processing by UsersController#index as HTML
-Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 413)
-
-
-Started GET "/users" for ::1 at 2021-03-04 11:17:18 -0600
-Processing by UsersController#index as HTML
-Completed 200 OK in 2ms (Views: 0.2ms | Allocations: 354)
-
-
-Started GET "/favicon.ico" for ::1 at 2021-03-04 11:17:20 -0600
+Started GET "/users" for ::1 at 2021-03-04 20:05:13 -0600
   
-ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+ActionController::RoutingError (No route matches [GET] "/users"):
   
-Started GET "/users" for ::1 at 2021-03-04 11:22:23 -0600
-Processing by UsersController#index as */*
-Completed 200 OK in 1ms (Views: 0.2ms | Allocations: 128)
+Started GET "/users/sign_up" for ::1 at 2021-03-04 20:07:23 -0600
+Processing by Devise::RegistrationsController#new as HTML
+Completed 200 OK in 27ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 5379)
 
 
-Started GET "/users" for ::1 at 2021-03-04 11:25:16 -0600
-  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/users" for ::1 at 2021-03-04 20:09:55 -0600
+Processing by UsersController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 23ms (Views: 1.9ms | ActiveRecord: 4.2ms | Allocations: 1132)
+
+
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by UsersController#index as */*
-Completed 200 OK in 34ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 2560)
-
-
-Started GET "/users" for ::1 at 2021-03-04 11:26:07 -0600
-Processing by UsersController#index as HTML
-Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 74)
-
-
-Started GET "/users" for ::1 at 2021-03-04 11:26:10 -0600
-Processing by UsersController#index as HTML
-Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 73)
-
-
-Started GET "/users" for ::1 at 2021-03-04 11:27:27 -0600
-Processing by UsersController#index as */*
+Migrating to CreateImages (20210305021310)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "images" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "url" varchar, "alt_text" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210305021310"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserImages (20210305021620)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "user_images" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "image_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_435d77ec18"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_1481caedb0"
+FOREIGN KEY ("image_id")
+  REFERENCES "images" ("id")
+)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_user_images_on_user_id" ON "user_images" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_images_on_image_id" ON "user_images" ("image_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210305021620"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  ↳ app/controllers/users_controller.rb:6:in `index'
-  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
-  ↳ app/controllers/users_controller.rb:6:in `index'
-Completed 200 OK in 333ms (Views: 264.2ms | ActiveRecord: 32.1ms | Allocations: 5672)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUsernameToUsers (20210305022307)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "users" ADD "username" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210305022307"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2021-03-04 20:26:55 -0600
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/Scott/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/Scott/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 16.6ms | Allocations: 315)
+Completed 200 OK in 48ms (Views: 23.5ms | ActiveRecord: 0.0ms | Allocations: 2475)
 
 
-Started GET "/users" for ::1 at 2021-03-04 11:28:08 -0600
+Started GET "/users/sign_in" for ::1 at 2021-03-04 20:27:02 -0600
+Processing by Devise::SessionsController#new as HTML
+Completed 200 OK in 48ms (Views: 0.4ms | ActiveRecord: 1.2ms | Allocations: 5981)
+
+
+Started GET "/users/sign_up" for ::1 at 2021-03-04 20:27:07 -0600
+Processing by Devise::RegistrationsController#new as HTML
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 252)
+
+
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "starr@spaceballs.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "starr@spaceballs.com"], ["encrypted_password", "$2a$12$S0mk5pE2mUebndr3JlrjHuj8U4A5XPqlrj.82mkvyzOe/zUXxUu52"], ["created_at", "2021-03-05 02:30:54.074414"], ["updated_at", "2021-03-05 02:30:54.074414"], ["username", "Lone Starr"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Destroy (1.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "starr@spaceballs.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "starr@spaceballs.com"], ["encrypted_password", "$2a$12$YHcdyF8ICOJpzJRwMGT4k.527Q82D4qRksOlNHsaIHKLXEsCzncgC"], ["created_at", "2021-03-05 02:33:48.751835"], ["updated_at", "2021-03-05 02:33:48.751835"], ["username", "Lone Starr"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("url", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["url", "https://apod.nasa.gov/apod/image/1612/ngc6357_nasa_3600.jpg"], ["created_at", "2021-03-05 02:33:48.768843"], ["updated_at", "2021-03-05 02:33:48.768843"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Destroy (1.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Destroy (0.7ms)[0m  [1m[31mDELETE FROM "images" WHERE "images"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUserImage Load (0.7ms)[0m  [1m[34mSELECT "user_images".* FROM "user_images"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "starr@spaceballs.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "starr@spaceballs.com"], ["encrypted_password", "$2a$12$oDU7xgAUMXanGAYIrvcCNuQGGtygTaWfHDlcxqA67US9Q7HfbvPdC"], ["created_at", "2021-03-05 02:36:02.868334"], ["updated_at", "2021-03-05 02:36:02.868334"], ["username", "Lone Starr"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.6ms)[0m  [1m[32mINSERT INTO "images" ("url", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["url", "https://apod.nasa.gov/apod/image/1612/ngc6357_nasa_3600.jpg"], ["created_at", "2021-03-05 02:36:02.874124"], ["updated_at", "2021-03-05 02:36:02.874124"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUserImage Create (0.6ms)[0m  [1m[32mINSERT INTO "user_images" ("user_id", "image_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 3], ["image_id", 2], ["created_at", "2021-03-05 02:36:02.911158"], ["updated_at", "2021-03-05 02:36:02.911158"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 3], ["LIMIT", 11]]
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images" ORDER BY "images"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_images" ON "users"."id" = "user_images"."user_id" WHERE "user_images"."image_id" = ? /* loading for inspect */ LIMIT ?[0m  [["image_id", 2], ["LIMIT", 11]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddApiFieldsToUsers (20210305023925)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "users" ADD "apod" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "weather" boolean[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "users" ADD "nasaimage" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210305023925"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Destroy (1.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 3]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUserImage Load (0.5ms)[0m  [1m[34mSELECT "user_images".* FROM "user_images"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserImage Destroy (1.3ms)[0m  [1m[31mDELETE FROM "user_images" WHERE "user_images"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Destroy (1.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 3]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mImage Load (0.6ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Destroy (0.7ms)[0m  [1m[31mDELETE FROM "images" WHERE "images"."id" = ?[0m  [["id", 2]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "starr@spaceballs.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username", "apod", "weather", "nasaimage") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "starr@spaceballs.com"], ["encrypted_password", "$2a$12$d1F4Y5jVqD00xWYF9bDJZOnvQ3uDWkLor5VDGbcccfStTxw8ElUki"], ["created_at", "2021-03-05 02:44:45.218503"], ["updated_at", "2021-03-05 02:44:45.218503"], ["username", "Lone Starr"], ["apod", 1], ["weather", 1], ["nasaimage", 1]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.6ms)[0m  [1m[32mINSERT INTO "images" ("url", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["url", "https://apod.nasa.gov/apod/image/1612/ngc6357_nasa_3600.jpg"], ["created_at", "2021-03-05 02:44:45.224682"], ["updated_at", "2021-03-05 02:44:45.224682"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUserImage Create (0.7ms)[0m  [1m[32mINSERT INTO "user_images" ("user_id", "image_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["image_id", 3], ["created_at", "2021-03-05 02:44:45.245960"], ["updated_at", "2021-03-05 02:44:45.245960"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFieldsToImages (20210305200622)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "images" ADD "date_created" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "images" ADD "center" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "images" ADD "secondary_creator" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "images" ADD "media_type" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "images" ADD "nasa_id" varchar[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "images" ADD "keywords" varchar[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "images" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210305200622"]]
+  [1m[36mTRANSACTION (16.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUserImage Load (0.2ms)[0m  [1m[34mSELECT "user_images".* FROM "user_images"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserImage Destroy (0.6ms)[0m  [1m[31mDELETE FROM "user_images" WHERE "user_images"."id" = ?[0m  [["id", 2]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 4]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Destroy (1.4ms)[0m  [1m[31mDELETE FROM "images" WHERE "images"."id" = ?[0m  [["id", 3]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "starr@spaceballs.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username", "apod", "weather", "nasaimage") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "starr@spaceballs.com"], ["encrypted_password", "$2a$12$gpr0RTlzup1dBbgDMbA0SeyZlFI3gcem5aTo92zQn6ILpIgrBYUE6"], ["created_at", "2021-03-05 20:14:52.368731"], ["updated_at", "2021-03-05 20:14:52.368731"], ["username", "Lone Starr"], ["apod", 1], ["weather", 1], ["nasaimage", 1]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "secondary_creator", "media_type", "nasa_id", "description") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Weighing in on the Dumbbell Nebula"], ["created_at", "2021-03-05 20:14:52.373912"], ["updated_at", "2021-03-05 20:14:52.373912"], ["date_created", "2011-08-10T21:00:09Z"], ["secondary_creator", "NASA/JPL-Caltech/Harvard-Smithsonian CfA"], ["media_type", "image"], ["nasa_id", "PIA14417"], ["description", "The Dumbbell nebula, also known as Messier 27, pumps out infrared light in this image from NASA Spitzer Space Telescope. Planetary nebulae are now known to be the remains of stars that once looked a lot like our sun."]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUserImage Create (0.5ms)[0m  [1m[32mINSERT INTO "user_images" ("user_id", "image_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 5], ["image_id", 4], ["created_at", "2021-03-05 20:14:52.391555"], ["updated_at", "2021-03-05 20:14:52.391555"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" ORDER BY "images"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" ORDER BY "images"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Update (1.8ms)[0m  [1m[33mUPDATE "images" SET "updated_at" = ?, "keywords" = ? WHERE "images"."id" = ?[0m  [["updated_at", "2021-03-05 20:15:54.521815"], ["keywords", "[\"Helix Nebula\", \"Spitzer Space Telescope\"]"], ["id", 4]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images" ORDER BY "images"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveUrlFromImages (20210305201811)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aimages" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "url" varchar DEFAULT NULL, "alt_text" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "date_created" varchar DEFAULT NULL, "center" varchar DEFAULT NULL, "secondary_creator" varchar DEFAULT NULL, "media_type" varchar DEFAULT NULL, "nasa_id" varchar DEFAULT NULL, "keywords" varchar DEFAULT NULL, "description" text DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aimages" ("id","title","url","alt_text","created_at","updated_at","date_created","center","secondary_creator","media_type","nasa_id","keywords","description")
+                     SELECT "id","title","url","alt_text","created_at","updated_at","date_created","center","secondary_creator","media_type","nasa_id","keywords","description" FROM "images"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "images"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "images" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "alt_text" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "date_created" varchar DEFAULT NULL, "center" varchar DEFAULT NULL, "secondary_creator" varchar DEFAULT NULL, "media_type" varchar DEFAULT NULL, "nasa_id" varchar DEFAULT NULL, "keywords" varchar DEFAULT NULL, "description" text DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "images" ("id","title","alt_text","created_at","updated_at","date_created","center","secondary_creator","media_type","nasa_id","keywords","description")
+                     SELECT "id","title","alt_text","created_at","updated_at","date_created","center","secondary_creator","media_type","nasa_id","keywords","description" FROM "aimages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aimages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210305201811"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddImageLinksToImages (20210305202043)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "images" ADD "thumb_href" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "images" ADD "med_href" varchar[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "images" ADD "orig_href" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210305202043"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUserImage Load (0.2ms)[0m  [1m[34mSELECT "user_images".* FROM "user_images"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserImage Destroy (0.6ms)[0m  [1m[31mDELETE FROM "user_images" WHERE "user_images"."id" = ?[0m  [["id", 3]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 5]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Destroy (0.6ms)[0m  [1m[31mDELETE FROM "images" WHERE "images"."id" = ?[0m  [["id", 4]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "starr@spaceballs.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username", "apod", "weather", "nasaimage") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "starr@spaceballs.com"], ["encrypted_password", "$2a$12$a1ACbGZEBjFD9/hnupAes.fxNvDM.UMLdS5Rn5K/OTEr9fAIApVIK"], ["created_at", "2021-03-05 20:21:12.494239"], ["updated_at", "2021-03-05 20:21:12.494239"], ["username", "Lone Starr"], ["apod", 1], ["weather", 1], ["nasaimage", 1]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "secondary_creator", "media_type", "nasa_id", "keywords", "description", "thumb_href", "med_href", "orig_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Weighing in on the Dumbbell Nebula"], ["created_at", "2021-03-05 20:21:12.499769"], ["updated_at", "2021-03-05 20:21:12.499769"], ["date_created", "2011-08-10T21:00:09Z"], ["center", "[\"JPL\", \"NASA/JPL-Caltech/Harvard-Smithsonian CfA\", \"Weighing in on the Dumbbell Nebula\", \"image\", \"PIA14417\", [\"Helix Nebula\", \"Spitzer Space Telescope\"], \"The Dumbbell nebula, also known as Messier 27, pumps out infrared light in this image from NASA Spitzer Space Telescope. Planetary nebulae are now known to be the remains of stars that once looked a lot like our sun.\", \"https://images-assets.nasa.gov/image/PIA14417/PIA14417~thumb.jpg\"]"], ["secondary_creator", "NASA/JPL-Caltech/Harvard-Smithsonian CfA"], ["media_type", "image"], ["nasa_id", "PIA14417"], ["keywords", "[\"Helix Nebula\", \"Spitzer Space Telescope\"]"], ["description", "The Dumbbell nebula, also known as Messier 27, pumps out infrared light in this image from NASA Spitzer Space Telescope. Planetary nebulae are now known to be the remains of stars that once looked a lot like our sun."], ["thumb_href", "https://images-assets.nasa.gov/image/PIA14417/PIA14417~thumb.jpg"], ["med_href", "https://images-assets.nasa.gov/image/PIA14417/PIA14417~medium.jpg"], ["orig_href", "https://images-assets.nasa.gov/image/PIA14417/PIA14417~medium.jpg"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserImage Create (0.4ms)[0m  [1m[32mINSERT INTO "user_images" ("user_id", "image_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 6], ["image_id", 1], ["created_at", "2021-03-05 20:21:12.513852"], ["updated_at", "2021-03-05 20:21:12.513852"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mImage Load (0.7ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 6], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 6], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ? ORDER BY "images"."id" ASC LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ? ORDER BY "images"."id" ASC LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+Started GET "/users/1" for ::1 at 2021-03-05 14:49:16 -0600
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   
-SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/users_controller.rb:10: `@' without identifiers is not allowed as an instance variable name
-/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/users_controller.rb:10: syntax error, unexpected end-of-input
-    @
-    ^):
+AbstractController::ActionNotFound (The action 'show' could not be found for UsersController):
   
-app/controllers/users_controller.rb:10: `@' without identifiers is not allowed as an instance variable name
-app/controllers/users_controller.rb:10: syntax error, unexpected end-of-input
-app/controllers/users_controller.rb:10: `@' without identifiers is not allowed as an instance variable name
-app/controllers/users_controller.rb:10: syntax error, unexpected end-of-input
-Started GET "/users" for ::1 at 2021-03-04 11:28:17 -0600
+actionpack (6.1.3) lib/abstract_controller/base.rb:160:in `process'
+actionpack (6.1.3) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.3) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.3) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.3) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.3) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.3) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.3) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/users/" for ::1 at 2021-03-05 14:49:51 -0600
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 192ms (Views: 148.0ms | ActiveRecord: 4.1ms | Allocations: 11283)
+
+
+Started GET "/users/" for ::1 at 2021-03-05 14:50:29 -0600
 Processing by UsersController#index as */*
   [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  ↳ app/controllers/users_controller.rb:6:in `index'
-  [1m[36mUser Load (12.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
-  ↳ app/controllers/users_controller.rb:6:in `index'
-Completed 200 OK in 232ms (Views: 161.4ms | ActiveRecord: 25.4ms | Allocations: 4897)
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 111ms (Views: 109.9ms | ActiveRecord: 3.1ms | Allocations: 7775)
 
 
-Started GET "/users/1" for ::1 at 2021-03-04 11:29:46 -0600
+Started GET "/users/1" for ::1 at 2021-03-05 14:50:43 -0600
 Processing by UsersController#show as */*
   Parameters: {"id"=>"1"}
-  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  ↳ app/controllers/users_controller.rb:10:in `show'
-  [1m[36mUser Load (9.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:10:in `show'
-Completed 200 OK in 389ms (Views: 1.5ms | ActiveRecord: 35.9ms | Allocations: 5192)
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 204 No Content in 7ms (ActiveRecord: 1.6ms | Allocations: 896)
 
 
-Started GET "/users/1" for ::1 at 2021-03-04 11:34:51 -0600
+Started GET "/users/6" for ::1 at 2021-03-05 14:51:51 -0600
 Processing by UsersController#show as */*
-  Parameters: {"id"=>"1"}
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:10:in `show'
-Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 640)
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 204 No Content in 3ms (ActiveRecord: 0.2ms | Allocations: 460)
 
 
-Started GET "/users/1" for ::1 at 2021-03-04 11:35:21 -0600
+Started GET "/users/6" for ::1 at 2021-03-05 14:52:10 -0600
 Processing by UsersController#show as */*
-  Parameters: {"id"=>"1"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:10:in `show'
-Completed 200 OK in 13ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 633)
+  Parameters: {"id"=>"6"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 200 OK in 213ms (Views: 1.5ms | ActiveRecord: 15.1ms | Allocations: 7657)
 
 
-Started GET "/users/1" for ::1 at 2021-03-04 11:36:23 -0600
+Started GET "/users/6" for ::1 at 2021-03-05 14:53:37 -0600
 Processing by UsersController#show as */*
-  Parameters: {"id"=>"1"}
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"id"=>"6"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (1.8ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
   ↳ app/controllers/users_controller.rb:10:in `show'
-Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 624)
+Completed 200 OK in 192ms (Views: 0.9ms | ActiveRecord: 12.3ms | Allocations: 22367)
 
 
-Started GET "/users/1" for ::1 at 2021-03-04 11:36:33 -0600
+Started GET "/users/6" for ::1 at 2021-03-05 15:05:16 -0600
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (93.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by UsersController#show as */*
-  Parameters: {"id"=>"1"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (1.7ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
   ↳ app/controllers/users_controller.rb:10:in `show'
-Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 624)
+Completed 200 OK in 491ms (Views: 0.7ms | ActiveRecord: 4.7ms | Allocations: 24861)
 
 
-Started GET "/users/1" for ::1 at 2021-03-04 11:36:57 -0600
+Started GET "/users/6" for ::1 at 2021-03-05 15:09:38 -0600
 Processing by UsersController#show as */*
-  Parameters: {"id"=>"1"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
   ↳ app/controllers/users_controller.rb:10:in `show'
-Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 624)
+Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1653)
 
 
-Started GET "/users/1" for ::1 at 2021-03-04 11:39:10 -0600
+Started GET "/users/6" for ::1 at 2021-03-05 15:09:56 -0600
 Processing by UsersController#show as */*
-  Parameters: {"id"=>"1"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
   ↳ app/controllers/users_controller.rb:10:in `show'
-Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 624)
+Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 1653)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 15:10:11 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 1653)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 15:10:41 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 3.6ms | Allocations: 1653)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 15:11:01 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 1633)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 15:11:54 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 0.9ms | Allocations: 1633)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 15:12:26 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 0.6ms | Allocations: 1633)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 15:12:38 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 46ms (Views: 0.9ms | ActiveRecord: 0.7ms | Allocations: 1633)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 15:19:02 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (2.8ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 28ms (Views: 3.8ms | ActiveRecord: 6.6ms | Allocations: 2148)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 15:20:52 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 1633)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:20:52 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:20:52 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:20:52 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:20:52 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:20:52 -0600
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json", "image"=>{"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json"}}
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json", "image"=>{"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json"}}
+  Parameters: {"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json", "image"=>{"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json"}}
+  Parameters: {"title"=>"N44C nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json", "image"=>{"title"=>"N44C nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json"}}
+  Parameters: {"title"=>"Ant Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json", "image"=>{"title"=>"Ant Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json"}}
+Completed 204 No Content in 127695ms (ActiveRecord: 0.0ms | Allocations: 62575)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:23:30 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:23:30 -0600
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started POST "/images/" for ::1 at 2021-03-05 15:23:30 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:23:30 -0600
+Started GET "/users/6" for ::1 at 2021-03-05 15:23:30 -0600
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+Processing by UsersController#show as */*
+  Parameters: {"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json", "image"=>{"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json"}}
+  Parameters: {"title"=>"Ant Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json", "image"=>{"title"=>"Ant Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json"}}
+  Parameters: {"id"=>"6"}
+  Parameters: {"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json", "image"=>{"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json"}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/images_controller.rb:15:in `create'
+Completed 500 Internal Server Error in 91ms (ActiveRecord: 5.0ms | Allocations: 10219)
+
+
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa4ba45928>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Parameters: {"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json", "image"=>{"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json"}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.5ms | Allocations: 1837)
+
+
+  ↳ app/controllers/images_controller.rb:15:in `create'
+Completed 500 Internal Server Error in 263ms (ActiveRecord: 0.6ms | Allocations: 31136)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:23:31 -0600
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.7ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 296ms (Views: 0.4ms | ActiveRecord: 3.8ms | Allocations: 40878)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:23:31 -0600
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa4ba47778>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa4b997030>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+  ↳ app/controllers/images_controller.rb:15:in `create'
+Completed 500 Internal Server Error in 515ms (ActiveRecord: 0.6ms | Allocations: 67641)
+
+
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa4ba556c0>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+Started POST "/images/" for ::1 at 2021-03-05 15:23:31 -0600
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Horsehead Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04215/collection.json", "image"=>{"title"=>"Horsehead Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04215/collection.json"}}
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.0ms | Allocations: 1832)
+
+
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa45c5f750>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Trifid Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04220/collection.json", "image"=>{"title"=>"Trifid Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04220/collection.json"}}
+  Parameters: {"title"=>"Planetary Nebula NGC 7293 also Known as the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA07902/collection.json", "image"=>{"title"=>"Planetary Nebula NGC 7293 also Known as the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA07902/collection.json"}}
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 1832)
+
+
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa45a66480>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+Started POST "/images/" for ::1 at 2021-03-05 15:23:31 -0600
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 1832)
+
+
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa4ba4f888>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+Started POST "/images/" for ::1 at 2021-03-05 15:23:31 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"N44C nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json", "image"=>{"title"=>"N44C nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json"}}
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 1832)
+
+
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa4b97b308>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"NGC 7293, the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA15658/collection.json", "image"=>{"title"=>"NGC 7293, the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA15658/collection.json"}}
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 1832)
+
+
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa4bb573e8>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+Started POST "/images/" for ::1 at 2021-03-05 15:23:31 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"The Twin Jet Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json", "image"=>{"title"=>"The Twin Jet Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json"}}
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 1832)
+
+
+  
+NameError (undefined local variable or method `image1' for #<ImagesController:0x007faa49107908>
+Did you mean?  image_url):
+  
+app/controllers/images_controller.rb:28:in `create'
+Started GET "/users/6" for ::1 at 2021-03-05 15:24:17 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 121ms (Views: 0.7ms | ActiveRecord: 10.2ms | Allocations: 18927)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:24:18 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json", "image"=>{"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.6ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Weighing in on the Dumbbell Nebula"], ["created_at", "2021-03-05 21:24:18.422726"], ["updated_at", "2021-03-05 21:24:18.422726"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA14417/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 204 No Content in 8ms (ActiveRecord: 2.3ms | Allocations: 1905)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:24:18 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json", "image"=>{"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Planetary Nebula"], ["created_at", "2021-03-05 21:24:18.448434"], ["updated_at", "2021-03-05 21:24:18.448434"], ["thumb_href", "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 204 No Content in 12ms (ActiveRecord: 6.9ms | Allocations: 1644)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:24:18 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Ant Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json", "image"=>{"title"=>"Ant Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Ant Nebula"], ["created_at", "2021-03-05 21:24:18.490585"], ["updated_at", "2021-03-05 21:24:18.490585"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04216/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Started POST "/images/" for ::1 at 2021-03-05 15:24:18 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:24:18 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:24:18 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Planetary Nebula NGC 7293 also Known as the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA07902/collection.json", "image"=>{"title"=>"Planetary Nebula NGC 7293 also Known as the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA07902/collection.json"}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/images/" for ::1 at 2021-03-05 15:24:18 -0600
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (1.6ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Planetary Nebula NGC 7293 also Known as the Helix Nebula"], ["created_at", "2021-03-05 21:24:18.578072"], ["updated_at", "2021-03-05 21:24:18.578072"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA07902/collection.json"]]
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"The Twin Jet Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json", "image"=>{"title"=>"The Twin Jet Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json"}}
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Processing by ImagesController#create as */*
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Parameters: {"title"=>"N44C nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json", "image"=>{"title"=>"N44C nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json"}}
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  Parameters: {"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json", "image"=>{"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json"}}
+Completed 204 No Content in 112ms (ActiveRecord: 3.6ms | Allocations: 16197)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "N44C nebula"], ["created_at", "2021-03-05 21:24:18.691920"], ["updated_at", "2021-03-05 21:24:18.691920"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04225/collection.json"]]
+Started POST "/images/" for ::1 at 2021-03-05 15:24:18 -0600
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 204 No Content in 105ms (ActiveRecord: 3.7ms | Allocations: 16201)
+
+
+  [1m[36mImage Create (2.3ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "The Twin Jet Nebula"], ["created_at", "2021-03-05 21:24:18.695072"], ["updated_at", "2021-03-05 21:24:18.695072"], ["thumb_href", "https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 204 No Content in 211ms (ActiveRecord: 5.1ms | Allocations: 20476)
+
+
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 204 No Content in 135ms (ActiveRecord: 3.5ms | Allocations: 10149)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Doradus Nebula"], ["created_at", "2021-03-05 21:24:18.810844"], ["updated_at", "2021-03-05 21:24:18.810844"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04200/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Horsehead Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04215/collection.json", "image"=>{"title"=>"Horsehead Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04215/collection.json"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/images/" for ::1 at 2021-03-05 15:24:18 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Trifid Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04220/collection.json", "image"=>{"title"=>"Trifid Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04220/collection.json"}}
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 204 No Content in 190ms (ActiveRecord: 3.4ms | Allocations: 28443)
+
+
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Horsehead Nebula"], ["created_at", "2021-03-05 21:24:18.858441"], ["updated_at", "2021-03-05 21:24:18.858441"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04215/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (1.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Trifid Nebula"], ["created_at", "2021-03-05 21:24:18.867338"], ["updated_at", "2021-03-05 21:24:18.867338"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04220/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 204 No Content in 48ms (ActiveRecord: 3.5ms | Allocations: 3287)
+
+
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 204 No Content in 73ms (ActiveRecord: 5.3ms | Allocations: 4323)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:24:19 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"NGC 7293, the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA15658/collection.json", "image"=>{"title"=>"NGC 7293, the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA15658/collection.json"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "NGC 7293, the Helix Nebula"], ["created_at", "2021-03-05 21:24:19.018221"], ["updated_at", "2021-03-05 21:24:19.018221"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA15658/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 204 No Content in 21ms (ActiveRecord: 1.8ms | Allocations: 6339)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 15:53:14 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+Started POST "/images/" for ::1 at 2021-03-05 15:53:15 -0600
+  [1m[36mImage Load (4.2ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 367ms (Views: 0.7ms | ActiveRecord: 6.2ms | Allocations: 18466)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:53:15 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:53:15 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:53:15 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:53:15 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json", "image"=>{"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json"}}
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Ant Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json", "image"=>{"title"=>"Ant Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json"}}
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json", "image"=>{"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json"}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ImagesController#create as */*
+  ↳ app/controllers/images_controller.rb:15:in `create'
+  Parameters: {"title"=>"NGC 7293, the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA15658/collection.json", "image"=>{"title"=>"NGC 7293, the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA15658/collection.json"}}
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (1.3ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "NGC 7293, the Helix Nebula"], ["created_at", "2021-03-05 21:53:15.889027"], ["updated_at", "2021-03-05 21:53:15.889027"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA15658/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 200 OK in 15ms (Views: 0.7ms | ActiveRecord: 4.7ms | Allocations: 2282)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Weighing in on the Dumbbell Nebula"], ["created_at", "2021-03-05 21:53:15.884016"], ["updated_at", "2021-03-05 21:53:15.884016"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA14417/collection.json"]]
+Started POST "/images/" for ::1 at 2021-03-05 15:53:15 -0600
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Processing by ImagesController#create as */*
+  [1m[36mImage Create (5181.6ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Doradus Nebula"], ["created_at", "2021-03-05 21:53:15.936085"], ["updated_at", "2021-03-05 21:53:15.936085"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04200/collection.json"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by ImagesController#create as */*
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  Parameters: {"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json", "image"=>{"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json"}}
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 200 OK in 5328ms (Views: 0.6ms | ActiveRecord: 4.5ms | Allocations: 24632)
+
+
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Ant Nebula"], ["created_at", "2021-03-05 21:53:15.938374"], ["updated_at", "2021-03-05 21:53:15.938374"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04216/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/images/" for ::1 at 2021-03-05 15:53:21 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"The Twin Jet Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json", "image"=>{"title"=>"The Twin Jet Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "The Twin Jet Nebula"], ["created_at", "2021-03-05 21:53:21.164203"], ["updated_at", "2021-03-05 21:53:21.164203"], ["thumb_href", "https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 200 OK in 31ms (Views: 3.1ms | ActiveRecord: 4.7ms | Allocations: 1800)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (7.0ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Planetary Nebula"], ["created_at", "2021-03-05 21:53:21.131276"], ["updated_at", "2021-03-05 21:53:21.131276"], ["thumb_href", "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 200 OK in 83ms (Views: 0.6ms | ActiveRecord: 13.7ms | Allocations: 9191)
+
+
+  Parameters: {"title"=>"Planetary Nebula NGC 7293 also Known as the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA07902/collection.json", "image"=>{"title"=>"Planetary Nebula NGC 7293 also Known as the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA07902/collection.json"}}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Planetary Nebula NGC 7293 also Known as the Helix Nebula"], ["created_at", "2021-03-05 21:53:21.216814"], ["updated_at", "2021-03-05 21:53:21.216814"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA07902/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 200 OK in 19ms (Views: 0.6ms | ActiveRecord: 4.4ms | Allocations: 1803)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 500 Internal Server Error in 5388ms (ActiveRecord: 5182.6ms | Allocations: 34799)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::BusyException: database is locked):
+  
+app/controllers/images_controller.rb:28:in `create'
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Started POST "/images/" for ::1 at 2021-03-05 15:53:21 -0600
+Started POST "/images/" for ::1 at 2021-03-05 15:53:21 -0600
+Completed 200 OK in 5568ms (Views: 0.4ms | ActiveRecord: 6.3ms | Allocations: 74446)
+
+
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Trifid Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04220/collection.json", "image"=>{"title"=>"Trifid Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04220/collection.json"}}
+Processing by ImagesController#create as */*
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  Parameters: {"title"=>"Horsehead Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04215/collection.json", "image"=>{"title"=>"Horsehead Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04215/collection.json"}}
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.5ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Trifid Nebula"], ["created_at", "2021-03-05 21:53:21.423865"], ["updated_at", "2021-03-05 21:53:21.423865"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04220/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (5190.6ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "Horsehead Nebula"], ["created_at", "2021-03-05 21:53:21.427826"], ["updated_at", "2021-03-05 21:53:21.427826"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04215/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 500 Internal Server Error in 5213ms (ActiveRecord: 5190.8ms | Allocations: 12399)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::BusyException: database is locked):
+  
+app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 200 OK in 5384ms (Views: 0.8ms | ActiveRecord: 2.0ms | Allocations: 53736)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 15:53:26 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"N44C nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json", "image"=>{"title"=>"N44C nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mImage Create (0.8ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "thumb_href") VALUES (?, ?, ?, ?)[0m  [["title", "N44C nebula"], ["created_at", "2021-03-05 21:53:26.822074"], ["updated_at", "2021-03-05 21:53:26.822074"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04225/collection.json"]]
+  ↳ app/controllers/images_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:28:in `create'
+Completed 200 OK in 45ms (Views: 2.5ms | ActiveRecord: 4.1ms | Allocations: 7522)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 16:00:17 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.8ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 307ms (Views: 0.7ms | ActiveRecord: 11.7ms | Allocations: 18176)
+
+
+Started GET "/users/6" for ::1 at 2021-03-05 16:25:20 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 165ms (Views: 0.6ms | ActiveRecord: 4.8ms | Allocations: 17310)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 16:25:21 -0600
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+Started POST "/images/" for ::1 at 2021-03-05 16:25:21 -0600
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+Started POST "/images/" for ::1 at 2021-03-05 16:25:22 -0600
+Started POST "/images/" for ::1 at 2021-03-05 16:25:22 -0600
+Started POST "/images/" for ::1 at 2021-03-05 16:25:22 -0600
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+Started POST "/images/" for ::1 at 2021-03-05 16:25:22 -0600
+Started POST "/images/" for ::1 at 2021-03-05 16:25:22 -0600
+Started POST "/images/" for ::1 at 2021-03-05 16:25:22 -0600
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+Started POST "/images/" for ::1 at 2021-03-05 16:25:22 -0600
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+Started POST "/images/" for ::1 at 2021-03-05 16:25:22 -0600
+  
+SyntaxError (/Users/Scott/Flatiron/code/Phase_3/Phase_3_Project/nasa_api_viewer_backend/app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+app/controllers/images_controller.rb:35: syntax error, unexpected end-of-input, expecting end
+Started GET "/users/6" for ::1 at 2021-03-05 16:28:58 -0600
+Processing by UsersController#show as */*
+Started POST "/images/" for ::1 at 2021-03-05 16:28:59 -0600
+Started POST "/images/" for ::1 at 2021-03-05 16:28:59 -0600
+Started POST "/images/" for ::1 at 2021-03-05 16:28:59 -0600
+Started POST "/images/" for ::1 at 2021-03-05 16:28:59 -0600
+  Parameters: {"id"=>"6"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" INNER JOIN "user_images" ON "images"."id" = "user_images"."image_id" WHERE "user_images"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 93ms (Views: 0.5ms | ActiveRecord: 6.0ms | Allocations: 18980)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 16:28:59 -0600
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json", "date_created"=>"1999-12-01T00:00:00Z", "center"=>"Select", "secondary_creator "=>"NASA, N. Walborn and J. Ma`iz-Apell`aniz (Space Telescope Science Institute), R. Barb`a (La Plata Observatory, La Plata, Argentina)", "media_type "=>"image", "nasa_id "=>"PIA04200", "keywords"=>["nebula"], "description"=>"A panoramic view of a vast, sculpted area of gas and dust where thousands of stars are being born has been captured by NASA's Hubble Space Telescope.  The image, taken by Hubble's Wide Field and Planetary Camera 2, is online at http://hubblesite.org/newscenter/archive/releases/2001/21/image/a/. The camera was designed and built by NASA's Jet Propulsion Laboratory, Pasadena, Calif.  The photo offers an unprecedented, detailed view of the entire inner region of the fertile, star-forming 30 Doradus Nebula. The mosaic picture shows that ultraviolet radiation and high-speed material unleashed by the stars in the cluster, called R136 (the large blue blob left of center), are weaving a tapestry of creation and destruction, triggering the collapse of looming gas and dust clouds and forming pillar-like structures that incubate newborn stars.  The 30 Doradus Nebula is in the Large Magellanic Cloud, a satellite galaxy of the Milky Way located 170,000 light-years from Earth. Nebulas like 30 Doradus are signposts of recent star birth. High-energy ultraviolet radiation from young, hot, massive stars in R136 causes surrounding gaseous material to glow. Previous Hubble telescope observations showed that R136 contains several dozen of the most massive stars known, each about 100 times the mass of the Sun and about 10 times as hot. These stellar behemoths formed about 2 million years ago.  The stars in R136 produce intense \"stellar winds,\" streams of material traveling at several million miles an hour. These winds push the gas away from the cluster and compress the inner regions of the surrounding gas and dust clouds (seen in the image as the pinkish material). The intense pressure triggers the collapse of parts of the clouds, producing a new star formation around the central cluster. Most stars in the nursery are not visible because they are still encased in cocoons of gas and dust.  This mosaic image of 30 Doradus consists of five overlapping pictures taken between January 1994 and September 2000 by the Wide Field and Planetary Camera 2. Several color filters enhance important details in the stars and the nebula. Blue corresponds to the hot stars. The greenish color denotes hot gas energized by the central cluster of stars. Pink depicts the glowing edges of the gas and dust clouds facing the cluster, which are being bombarded by winds and radiation. Reddish-brown represents the cooler surfaces of the clouds, which are not receiving direct radiation from the central cluster.  http://photojournal.jpl.nasa.gov/catalog/PIA04200", "image"=>{"title"=>"Doradus Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04200/collection.json", "date_created"=>"1999-12-01T00:00:00Z", "center"=>"Select", "secondary_creator "=>"NASA, N. Walborn and J. Ma`iz-Apell`aniz (Space Telescope Science Institute), R. Barb`a (La Plata Observatory, La Plata, Argentina)", "media_type "=>"image", "nasa_id "=>"PIA04200", "keywords"=>["nebula"], "description"=>"A panoramic view of a vast, sculpted area of gas and dust where thousands of stars are being born has been captured by NASA's Hubble Space Telescope.  The image, taken by Hubble's Wide Field and Planetary Camera 2, is online at http://hubblesite.org/newscenter/archive/releases/2001/21/image/a/. The camera was designed and built by NASA's Jet Propulsion Laboratory, Pasadena, Calif.  The photo offers an unprecedented, detailed view of the entire inner region of the fertile, star-forming 30 Doradus Nebula. The mosaic picture shows that ultraviolet radiation and high-speed material unleashed by the stars in the cluster, called R136 (the large blue blob left of center), are weaving a tapestry of creation and destruction, triggering the collapse of looming gas and dust clouds and forming pillar-like structures that incubate newborn stars.  The 30 Doradus Nebula is in the Large Magellanic Cloud, a satellite galaxy of the Milky Way located 170,000 light-years from Earth. Nebulas like 30 Doradus are signposts of recent star birth. High-energy ultraviolet radiation from young, hot, massive stars in R136 causes surrounding gaseous material to glow. Previous Hubble telescope observations showed that R136 contains several dozen of the most massive stars known, each about 100 times the mass of the Sun and about 10 times as hot. These stellar behemoths formed about 2 million years ago.  The stars in R136 produce intense \"stellar winds,\" streams of material traveling at several million miles an hour. These winds push the gas away from the cluster and compress the inner regions of the surrounding gas and dust clouds (seen in the image as the pinkish material). The intense pressure triggers the collapse of parts of the clouds, producing a new star formation around the central cluster. Most stars in the nursery are not visible because they are still encased in cocoons of gas and dust.  This mosaic image of 30 Doradus consists of five overlapping pictures taken between January 1994 and September 2000 by the Wide Field and Planetary Camera 2. Several color filters enhance important details in the stars and the nebula. Blue corresponds to the hot stars. The greenish color denotes hot gas energized by the central cluster of stars. Pink depicts the glowing edges of the gas and dust clouds facing the cluster, which are being bombarded by winds and radiation. Reddish-brown represents the cooler surfaces of the clouds, which are not receiving direct radiation from the central cluster.  http://photojournal.jpl.nasa.gov/catalog/PIA04200"}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/images_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mImage Create (2.5ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Doradus Nebula"], ["created_at", "2021-03-05 22:28:59.874394"], ["updated_at", "2021-03-05 22:28:59.874394"], ["date_created", "1999-12-01T00:00:00Z"], ["center", "Select"], ["keywords", "[\"nebula\"]"], ["description", "A panoramic view of a vast, sculpted area of gas and dust where thousands of stars are being born has been captured by NASA's Hubble Space Telescope.  The image, taken by Hubble's Wide Field and Planetary Camera 2, is online at http://hubblesite.org/newscenter/archive/releases/2001/21/image/a/. The camera was designed and built by NASA's Jet Propulsion Laboratory, Pasadena, Calif.  The photo offers an unprecedented, detailed view of the entire inner region of the fertile, star-forming 30 Doradus Nebula. The mosaic picture shows that ultraviolet radiation and high-speed material unleashed by the stars in the cluster, called R136 (the large blue blob left of center), are weaving a tapestry of creation and destruction, triggering the collapse of looming gas and dust clouds and forming pillar-like structures that incubate newborn stars.  The 30 Doradus Nebula is in the Large Magellanic Cloud, a satellite galaxy of the Milky Way located 170,000 light-years from Earth. Nebulas like 30 Doradus are signposts of recent star birth. High-energy ultraviolet radiation from young, hot, massive stars in R136 causes surrounding gaseous material to glow. Previous Hubble telescope observations showed that R136 contains several dozen of the most massive stars known, each about 100 times the mass of the Sun and about 10 times as hot. These stellar behemoths formed about 2 million years ago.  The stars in R136 produce intense \"stellar winds,\" streams of material traveling at several million miles an hour. These winds push the gas away from the cluster and compress the inner regions of the surrounding gas and dust clouds (seen in the image as the pinkish material). The intense pressure triggers the collapse of parts of the clouds, producing a new star formation around the central cluster. Most stars in the nursery are not visible because they are still encased in cocoons of gas and dust.  This mosaic image of 30 Doradus consists of five overlapping pictures taken between January 1994 and September 2000 by the Wide Field and Planetary Camera 2. Several color filters enhance important details in the stars and the nebula. Blue corresponds to the hot stars. The greenish color denotes hot gas energized by the central cluster of stars. Pink depicts the glowing edges of the gas and dust clouds facing the cluster, which are being bombarded by winds and radiation. Reddish-brown represents the cooler surfaces of the clouds, which are not receiving direct radiation from the central cluster.  http://photojournal.jpl.nasa.gov/catalog/PIA04200"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04200/collection.json"]]
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Processing by ImagesController#create as */*
+Processing by ImagesController#create as */*
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Completed 200 OK in 95ms (Views: 0.5ms | ActiveRecord: 15.8ms | Allocations: 15133)
+
+
+  Parameters: {"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json", "date_created"=>"2017-12-08T00:00:00Z", "center"=>"GSFC", "media_type "=>"image", "nasa_id "=>"GSFC_20171208_Archive_e001465", "keywords"=>["Planetary Nebula", "nasa", "nebula", "hubble", "hubblespacetelescope"], "description"=>"This planetary nebula's simple, graceful appearance is thought to be due to perspective: our view from Earth looking straight into what is actually a barrel-shaped cloud of gas shrugged off by a dying central star. Hot blue gas near the energizing central star gives way to progressively cooler green and yellow gas at greater distances with the coolest red gas along the outer boundary. Credit: NASA/Hubble Heritage Team   ----  The Ring Nebula's distinctive shape makes it a popular illustration for astronomy books. But new observations by NASA's Hubble Space Telescope of the glowing gas shroud around an old, dying, sun-like star reveal a new twist.  &quot;The nebula is not like a bagel, but rather, it's like a jelly doughnut, because it's filled with material in the middle,&quot; said C. Robert O'Dell of Vanderbilt University in Nashville, Tenn. He leads a research team that used Hubble and several ground-based telescopes to obtain the best view yet of the iconic nebula. The images show a more complex structure than astronomers once thought and have allowed them to construct the most precise 3-D model of the nebula.  &quot;With Hubble's detail, we see a completely different shape than what's been thought about historically for this classic nebula,&quot; O'Dell said. &quot;The new Hubble observations show the nebula in much clearer detail, and we see things are not as simple as we previously thought.&quot;   The Ring Nebula is about 2,000 light-years from Earth and measures roughly 1 light-year across. Located in the constellation Lyra, the nebula is a popular target for amateur astronomers. Read more: <a href=\"http://1.usa.gov/14VAOMk\" rel=\"nofollow\">1.usa.gov/14VAOMk</a>  <b><a href=\"http://www.nasa.gov/audience/formedia/features/MP_Photo_Guidelines.html\" rel=\"nofollow\">NASA image use policy.</a></b>  <b><a href=\"http://www.nasa.gov/centers/goddard/home/index.html\" rel=\"nofollow\">NASA Goddard Space Flight Center</a></b> enables NASA’s mission through four scientific endeavors: Earth Science, Heliophysics, Solar System Exploration, and Astrophysics. Goddard plays a leading role in NASA’s accomplishments by contributing compelling scientific knowledge to advance the Agency’s mission.  <b>Follow us on <a href=\"http://twitter.com/NASAGoddardPix\" rel=\"nofollow\">Twitter</a></b>  <b>Like us on <a href=\"http://www.facebook.com/pages/Greenbelt-MD/NASA-Goddard/395013845897?ref=tsd\" rel=\"nofollow\">Facebook</a></b>  <b>Find us on <a href=\"http://instagram.com/nasagoddard?vm=grid\" rel=\"nofollow\">Instagram</a></b>", "image"=>{"title"=>"Planetary Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json", "date_created"=>"2017-12-08T00:00:00Z", "center"=>"GSFC", "media_type "=>"image", "nasa_id "=>"GSFC_20171208_Archive_e001465", "keywords"=>["Planetary Nebula", "nasa", "nebula", "hubble", "hubblespacetelescope"], "description"=>"This planetary nebula's simple, graceful appearance is thought to be due to perspective: our view from Earth looking straight into what is actually a barrel-shaped cloud of gas shrugged off by a dying central star. Hot blue gas near the energizing central star gives way to progressively cooler green and yellow gas at greater distances with the coolest red gas along the outer boundary. Credit: NASA/Hubble Heritage Team   ----  The Ring Nebula's distinctive shape makes it a popular illustration for astronomy books. But new observations by NASA's Hubble Space Telescope of the glowing gas shroud around an old, dying, sun-like star reveal a new twist.  &quot;The nebula is not like a bagel, but rather, it's like a jelly doughnut, because it's filled with material in the middle,&quot; said C. Robert O'Dell of Vanderbilt University in Nashville, Tenn. He leads a research team that used Hubble and several ground-based telescopes to obtain the best view yet of the iconic nebula. The images show a more complex structure than astronomers once thought and have allowed them to construct the most precise 3-D model of the nebula.  &quot;With Hubble's detail, we see a completely different shape than what's been thought about historically for this classic nebula,&quot; O'Dell said. &quot;The new Hubble observations show the nebula in much clearer detail, and we see things are not as simple as we previously thought.&quot;   The Ring Nebula is about 2,000 light-years from Earth and measures roughly 1 light-year across. Located in the constellation Lyra, the nebula is a popular target for amateur astronomers. Read more: <a href=\"http://1.usa.gov/14VAOMk\" rel=\"nofollow\">1.usa.gov/14VAOMk</a>  <b><a href=\"http://www.nasa.gov/audience/formedia/features/MP_Photo_Guidelines.html\" rel=\"nofollow\">NASA image use policy.</a></b>  <b><a href=\"http://www.nasa.gov/centers/goddard/home/index.html\" rel=\"nofollow\">NASA Goddard Space Flight Center</a></b> enables NASA’s mission through four scientific endeavors: Earth Science, Heliophysics, Solar System Exploration, and Astrophysics. Goddard plays a leading role in NASA’s accomplishments by contributing compelling scientific knowledge to advance the Agency’s mission.  <b>Follow us on <a href=\"http://twitter.com/NASAGoddardPix\" rel=\"nofollow\">Twitter</a></b>  <b>Like us on <a href=\"http://www.facebook.com/pages/Greenbelt-MD/NASA-Goddard/395013845897?ref=tsd\" rel=\"nofollow\">Facebook</a></b>  <b>Find us on <a href=\"http://instagram.com/nasagoddard?vm=grid\" rel=\"nofollow\">Instagram</a></b>"}}
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Parameters: {"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json", "date_created"=>"2011-08-10T21:00:09Z", "center"=>"JPL", "secondary_creator "=>"NASA/JPL-Caltech/Harvard-Smithsonian CfA", "media_type "=>"image", "nasa_id "=>"PIA14417", "keywords"=>["Helix Nebula", "Spitzer Space Telescope"], "description"=>"The Dumbbell nebula, also known as Messier 27, pumps out infrared light in this image from NASA Spitzer Space Telescope. Planetary nebulae are now known to be the remains of stars that once looked a lot like our sun.", "image"=>{"title"=>"Weighing in on the Dumbbell Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA14417/collection.json", "date_created"=>"2011-08-10T21:00:09Z", "center"=>"JPL", "secondary_creator "=>"NASA/JPL-Caltech/Harvard-Smithsonian CfA", "media_type "=>"image", "nasa_id "=>"PIA14417", "keywords"=>["Helix Nebula", "Spitzer Space Telescope"], "description"=>"The Dumbbell nebula, also known as Messier 27, pumps out infrared light in this image from NASA Spitzer Space Telescope. Planetary nebulae are now known to be the remains of stars that once looked a lot like our sun."}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mImage Create (1.2ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Weighing in on the Dumbbell Nebula"], ["created_at", "2021-03-05 22:28:59.931769"], ["updated_at", "2021-03-05 22:28:59.931769"], ["date_created", "2011-08-10T21:00:09Z"], ["center", "JPL"], ["keywords", "[\"Helix Nebula\", \"Spitzer Space Telescope\"]"], ["description", "The Dumbbell nebula, also known as Messier 27, pumps out infrared light in this image from NASA Spitzer Space Telescope. Planetary nebulae are now known to be the remains of stars that once looked a lot like our sun."], ["thumb_href", "https://images-assets.nasa.gov/image/PIA14417/collection.json"]]
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Completed 200 OK in 24ms (Views: 0.6ms | ActiveRecord: 6.8ms | Allocations: 2895)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 16:28:59 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Ant Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json", "date_created"=>"1999-12-10T00:00:01Z", "center"=>"JPL", "secondary_creator "=>"NASA/Space Telescope Science Institute", "media_type "=>"image", "nasa_id "=>"PIA04216", "keywords"=>["Ant nebula", "Hubble Space Telescope"], "description"=>"This image from NASA Hubble Space Telescope image of a celestial object called the Ant Nebula may shed new light on the future demise of our Sun. ", "image"=>{"title"=>"Ant Nebula", "date_created"=>"1999-12-10T00:00:01Z", "center"=>"JPL", "keywords"=>["Ant nebula", "Hubble Space Telescope"], "description"=>"This image from NASA Hubble Space Telescope image of a celestial object called the Ant Nebula may shed new light on the future demise of our Sun. ", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04216/collection.json"}}
+Started POST "/images/" for ::1 at 2021-03-05 16:28:59 -0600
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  Parameters: {"title"=>"The Twin Jet Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json", "date_created"=>"2015-08-26T00:00:00Z", "center"=>"GSFC", "media_type "=>"image", "nasa_id "=>"hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o", "keywords"=>["M2-9", "Twin Jet Nebula"], "description"=>"The Twin Jet Nebula, or PN M2-9, is a striking example of a bipolar planetary nebula. Bipolar planetary nebulae are formed when the central object is not a single star, but a binary system, Studies have shown that the nebula’s size increases with time, and measurements of this rate of increase suggest that the stellar outburst that formed the lobes occurred just 1200 years ago.", "image"=>{"title"=>"The Twin Jet Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json", "date_created"=>"2015-08-26T00:00:00Z", "center"=>"GSFC", "media_type "=>"image", "nasa_id "=>"hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o", "keywords"=>["M2-9", "Twin Jet Nebula"], "description"=>"The Twin Jet Nebula, or PN M2-9, is a striking example of a bipolar planetary nebula. Bipolar planetary nebulae are formed when the central object is not a single star, but a binary system, Studies have shown that the nebula’s size increases with time, and measurements of this rate of increase suggest that the stellar outburst that formed the lobes occurred just 1200 years ago."}}
+Processing by ImagesController#create as */*
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Trifid Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04220/collection.json", "date_created"=>"1999-12-02T00:00:06Z", "center"=>"JPL", "secondary_creator "=>"2MASS", "media_type "=>"image", "nasa_id "=>"PIA04220", "keywords"=>["Trifid Nebula", "Two Micron All Sky Survey 2MASS"], "description"=>"Atlas Image mosaic, covering 14.8 x 20.0 on the sky, of the Trifid Nebula, aka Messier 20 and NGC 6514. The Trifid is only about 1.5 degrees northwest on the sky of the larger Lagoon Nebula Messier 8 in the constellation Sagittarius", "image"=>{"title"=>"Trifid Nebula", "date_created"=>"1999-12-02T00:00:06Z", "center"=>"JPL", "keywords"=>["Trifid Nebula", "Two Micron All Sky Survey 2MASS"], "description"=>"Atlas Image mosaic, covering 14.8 x 20.0 on the sky, of the Trifid Nebula, aka Messier 20 and NGC 6514. The Trifid is only about 1.5 degrees northwest on the sky of the larger Lagoon Nebula Messier 8 in the constellation Sagittarius", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04220/collection.json"}}
+  Parameters: {"title"=>"NGC 7293, the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA15658/collection.json", "date_created"=>"2012-05-16T21:26:20Z", "center"=>"JPL", "secondary_creator "=>"NASA/JPL-Caltech", "media_type "=>"image", "nasa_id "=>"PIA15658", "keywords"=>["Helix Nebula", "Galaxy Evolution Explorer GALEX"], "description"=>"NGC 7293, better known as the Helix nebula, displays its ultraviolet glow courtesy of NASA GALEX. The Helix is the nearest example of a planetary nebula, which is the eventual fate of a star, like our own Sun, as it approaches the end of its life.", "image"=>{"title"=>"NGC 7293, the Helix Nebula", "date_created"=>"2012-05-16T21:26:20Z", "center"=>"JPL", "keywords"=>["Helix Nebula", "Galaxy Evolution Explorer GALEX"], "description"=>"NGC 7293, better known as the Helix nebula, displays its ultraviolet glow courtesy of NASA GALEX. The Helix is the nearest example of a planetary nebula, which is the eventual fate of a star, like our own Sun, as it approaches the end of its life.", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA15658/collection.json"}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mImage Create (1.0ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Ant Nebula"], ["created_at", "2021-03-05 22:28:59.966674"], ["updated_at", "2021-03-05 22:28:59.966674"], ["date_created", "1999-12-10T00:00:01Z"], ["center", "JPL"], ["keywords", "[\"Ant nebula\", \"Hubble Space Telescope\"]"], ["description", "This image from NASA Hubble Space Telescope image of a celestial object called the Ant Nebula may shed new light on the future demise of our Sun. "], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04216/collection.json"]]
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mImage Create (5178.4ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Planetary Nebula"], ["created_at", "2021-03-05 22:28:59.920441"], ["updated_at", "2021-03-05 22:28:59.920441"], ["date_created", "2017-12-08T00:00:00Z"], ["center", "GSFC"], ["keywords", "[\"Planetary Nebula\", \"nasa\", \"nebula\", \"hubble\", \"hubblespacetelescope\"]"], ["description", "This planetary nebula's simple, graceful appearance is thought to be due to perspective: our view from Earth looking straight into what is actually a barrel-shaped cloud of gas shrugged off by a dying central star. Hot blue gas near the energizing central star gives way to progressively cooler green and yellow gas at greater distances with the coolest red gas along the outer boundary. Credit: NASA/Hubble Heritage Team   ----  The Ring Nebula's distinctive shape makes it a popular illustration for astronomy books. But new observations by NASA's Hubble Space Telescope of the glowing gas shroud around an old, dying, sun-like star reveal a new twist.  &quot;The nebula is not like a bagel, but rather, it's like a jelly doughnut, because it's filled with material in the middle,&quot; said C. Robert O'Dell of Vanderbilt University in Nashville, Tenn. He leads a research team that used Hubble and several ground-based telescopes to obtain the best view yet of the iconic nebula. The images show a more complex structure than astronomers once thought and have allowed them to construct the most precise 3-D model of the nebula.  &quot;With Hubble's detail, we see a completely different shape than what's been thought about historically for this classic nebula,&quot; O'Dell said. &quot;The new Hubble observations show the nebula in much clearer detail, and we see things are not as simple as we previously thought.&quot;   The Ring Nebula is about 2,000 light-years from Earth and measures roughly 1 light-year across. Located in the constellation Lyra, the nebula is a popular target for amateur astronomers. Read more: <a href=\"http://1.usa.gov/14VAOMk\" rel=\"nofollow\">1.usa.gov/14VAOMk</a>  <b><a href=\"http://www.nasa.gov/audience/formedia/features/MP_Photo_Guidelines.html\" rel=\"nofollow\">NASA image use policy.</a></b>  <b><a href=\"http://www.nasa.gov/centers/goddard/home/index.html\" rel=\"nofollow\">NASA Goddard Space Flight Center</a></b> enables NASA’s mission through four scientific endeavors: Earth Science, Heliophysics, Solar System Exploration, and Astrophysics. Goddard plays a leading role in NASA’s accomplishments by contributing compelling scientific knowledge to advance the Agency’s mission.  <b>Follow us on <a href=\"http://twitter.com/NASAGoddardPix\" rel=\"nofollow\">Twitter</a></b>  <b>Like us on <a href=\"http://www.facebook.com/pages/Greenbelt-MD/NASA-Goddard/395013845897?ref=tsd\" rel=\"nofollow\">Facebook</a></b>  <b>Find us on <a href=\"http://instagram.com/nasagoddard?vm=grid\" rel=\"nofollow\">Instagram</a></b>"], ["thumb_href", "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001465/collection.json"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Trifid Nebula"], ["created_at", "2021-03-05 22:29:05.169779"], ["updated_at", "2021-03-05 22:29:05.169779"], ["date_created", "1999-12-02T00:00:06Z"], ["center", "JPL"], ["keywords", "[\"Trifid Nebula\", \"Two Micron All Sky Survey 2MASS\"]"], ["description", "Atlas Image mosaic, covering 14.8 x 20.0 on the sky, of the Trifid Nebula, aka Messier 20 and NGC 6514. The Trifid is only about 1.5 degrees northwest on the sky of the larger Lagoon Nebula Messier 8 in the constellation Sagittarius"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04220/collection.json"]]
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Completed 500 Internal Server Error in 10445ms (ActiveRecord: 5178.5ms | Allocations: 23604)
+
+
+  [1m[36mImage Create (5178.6ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "The Twin Jet Nebula"], ["created_at", "2021-03-05 22:28:59.977891"], ["updated_at", "2021-03-05 22:28:59.977891"], ["date_created", "2015-08-26T00:00:00Z"], ["center", "GSFC"], ["keywords", "[\"M2-9\", \"Twin Jet Nebula\"]"], ["description", "The Twin Jet Nebula, or PN M2-9, is a striking example of a bipolar planetary nebula. Bipolar planetary nebulae are formed when the central object is not a single star, but a binary system, Studies have shown that the nebula’s size increases with time, and measurements of this rate of increase suggest that the stellar outburst that formed the lobes occurred just 1200 years ago."], ["thumb_href", "https://images-assets.nasa.gov/image/hubble-sees-the-wings-of-a-butterfly-the-twin-jet-nebula_20283986193_o/collection.json"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Completed 200 OK in 5209ms (Views: 0.7ms | ActiveRecord: 2.9ms | Allocations: 18270)
+
+
+Completed 200 OK in 10397ms (Views: 0.4ms | ActiveRecord: 6.0ms | Allocations: 18232)
+
+
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  
+ActiveRecord::StatementInvalid (SQLite3::BusyException: database is locked):
+  
+app/controllers/images_controller.rb:30:in `create'
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "NGC 7293, the Helix Nebula"], ["created_at", "2021-03-05 22:29:10.379123"], ["updated_at", "2021-03-05 22:29:10.379123"], ["date_created", "2012-05-16T21:26:20Z"], ["center", "JPL"], ["keywords", "[\"Helix Nebula\", \"Galaxy Evolution Explorer GALEX\"]"], ["description", "NGC 7293, better known as the Helix nebula, displays its ultraviolet glow courtesy of NASA GALEX. The Helix is the nearest example of a planetary nebula, which is the eventual fate of a star, like our own Sun, as it approaches the end of its life."], ["thumb_href", "https://images-assets.nasa.gov/image/PIA15658/collection.json"]]
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Completed 500 Internal Server Error in 10540ms (ActiveRecord: 5178.7ms | Allocations: 70390)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::BusyException: database is locked):
+  
+app/controllers/images_controller.rb:30:in `create'
+Started POST "/images/" for ::1 at 2021-03-05 16:29:10 -0600
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Completed 200 OK in 5461ms (Views: 0.6ms | ActiveRecord: 2.9ms | Allocations: 106837)
+
+
+Started POST "/images/" for ::1 at 2021-03-05 16:29:10 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"Horsehead Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04215/collection.json", "date_created"=>"1999-12-01T00:00:07Z", "center"=>"JPL", "secondary_creator "=>"JPL/NASA, NOAO, ESA and The Hubble Heritage Team, STScI/AURA", "media_type "=>"image", "nasa_id "=>"PIA04215", "keywords"=>["Horsehead Nebula", "Hubble Space Telescope"], "description"=>"Rising from a sea of dust and gas like a giant seahorse, the Horsehead nebula is one of the most photographed objects in the sky. NASA Hubble Space Telescope took a close-up look at this heavenly icon, revealing the cloud intricate structure.", "image"=>{"title"=>"Horsehead Nebula", "date_created"=>"1999-12-01T00:00:07Z", "center"=>"JPL", "keywords"=>["Horsehead Nebula", "Hubble Space Telescope"], "description"=>"Rising from a sea of dust and gas like a giant seahorse, the Horsehead nebula is one of the most photographed objects in the sky. NASA Hubble Space Telescope took a close-up look at this heavenly icon, revealing the cloud intricate structure.", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04215/collection.json"}}
+Processing by ImagesController#create as */*
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  Parameters: {"title"=>"Planetary Nebula NGC 7293 also Known as the Helix Nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA07902/collection.json", "date_created"=>"2005-05-05T20:02:51Z", "center"=>"JPL", "secondary_creator "=>"NASA/JPL-Caltech/SSC", "media_type "=>"image", "nasa_id "=>"PIA07902", "keywords"=>["Helix Nebula", "Galaxy Evolution Explorer GALEX", "NGC 7293"], "description"=>"This ultraviolet image from NASA Galaxy Evolution Explorer is of the planetary nebula NGC 7293 also known as the Helix Nebula. It is the nearest example of what happens to a star, like our own Sun, as it approaches the end of its life when it runs out of fuel, expels gas outward and evolves into a much hotter, smaller and denser white dwarf star.  http://photojournal.jpl.nasa.gov/catalog/PIA07902", "image"=>{"title"=>"Planetary Nebula NGC 7293 also Known as the Helix Nebula", "date_created"=>"2005-05-05T20:02:51Z", "center"=>"JPL", "keywords"=>["Helix Nebula", "Galaxy Evolution Explorer GALEX", "NGC 7293"], "description"=>"This ultraviolet image from NASA Galaxy Evolution Explorer is of the planetary nebula NGC 7293 also known as the Helix Nebula. It is the nearest example of what happens to a star, like our own Sun, as it approaches the end of its life when it runs out of fuel, expels gas outward and evolves into a much hotter, smaller and denser white dwarf star.  http://photojournal.jpl.nasa.gov/catalog/PIA07902", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA07902/collection.json"}}
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.5ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Horsehead Nebula"], ["created_at", "2021-03-05 22:29:10.634582"], ["updated_at", "2021-03-05 22:29:10.634582"], ["date_created", "1999-12-01T00:00:07Z"], ["center", "JPL"], ["keywords", "[\"Horsehead Nebula\", \"Hubble Space Telescope\"]"], ["description", "Rising from a sea of dust and gas like a giant seahorse, the Horsehead nebula is one of the most photographed objects in the sky. NASA Hubble Space Telescope took a close-up look at this heavenly icon, revealing the cloud intricate structure."], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04215/collection.json"]]
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mImage Create (5137.0ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Planetary Nebula NGC 7293 also Known as the Helix Nebula"], ["created_at", "2021-03-05 22:29:10.647503"], ["updated_at", "2021-03-05 22:29:10.647503"], ["date_created", "2005-05-05T20:02:51Z"], ["center", "JPL"], ["keywords", "[\"Helix Nebula\", \"Galaxy Evolution Explorer GALEX\", \"NGC 7293\"]"], ["description", "This ultraviolet image from NASA Galaxy Evolution Explorer is of the planetary nebula NGC 7293 also known as the Helix Nebula. It is the nearest example of what happens to a star, like our own Sun, as it approaches the end of its life when it runs out of fuel, expels gas outward and evolves into a much hotter, smaller and denser white dwarf star.  http://photojournal.jpl.nasa.gov/catalog/PIA07902"], ["thumb_href", "https://images-assets.nasa.gov/image/PIA07902/collection.json"]]
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Completed 200 OK in 5161ms (Views: 0.5ms | ActiveRecord: 2.6ms | Allocations: 20545)
+
+
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Started POST "/images/" for ::1 at 2021-03-05 16:29:15 -0600
+Processing by ImagesController#create as */*
+  Parameters: {"title"=>"N44C nebula", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json", "date_created"=>"1999-12-03T00:00:02Z", "center"=>"JPL", "secondary_creator "=>"NASA and the Hubble Heritage Team STScI/AURA Acknowledgment: D. Garnett University of Arizona", "media_type "=>"image", "nasa_id "=>"PIA04225", "keywords"=>["N44C nebula", "Hubble Space Telescope"], "description"=>"Resembling the hair in Botticelli famous portrait of the birth of Venus, an image from NASA Hubble Space Telescope has captured softly glowing filaments streaming from hot young stars in a nearby nebula.", "image"=>{"title"=>"N44C nebula", "date_created"=>"1999-12-03T00:00:02Z", "center"=>"JPL", "keywords"=>["N44C nebula", "Hubble Space Telescope"], "description"=>"Resembling the hair in Botticelli famous portrait of the birth of Venus, an image from NASA Hubble Space Telescope has captured softly glowing filaments streaming from hot young stars in a nearby nebula.", "thumb_href"=>"https://images-assets.nasa.gov/image/PIA04225/collection.json"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Completed 500 Internal Server Error in 5158ms (ActiveRecord: 5137.2ms | Allocations: 8508)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::BusyException: database is locked):
+  
+app/controllers/images_controller.rb:30:in `create'
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mImage Create (0.5ms)[0m  [1m[32mINSERT INTO "images" ("title", "created_at", "updated_at", "date_created", "center", "keywords", "description", "thumb_href") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "N44C nebula"], ["created_at", "2021-03-05 22:29:15.808062"], ["updated_at", "2021-03-05 22:29:15.808062"], ["date_created", "1999-12-03T00:00:02Z"], ["center", "JPL"], ["keywords", "[\"N44C nebula\", \"Hubble Space Telescope\"]"], ["description", "Resembling the hair in Botticelli famous portrait of the birth of Venus, an image from NASA Hubble Space Telescope has captured softly glowing filaments streaming from hot young stars in a nearby nebula."], ["thumb_href", "https://images-assets.nasa.gov/image/PIA04225/collection.json"]]
+  ↳ app/controllers/images_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/images_controller.rb:30:in `create'
+Completed 200 OK in 79ms (Views: 1.3ms | ActiveRecord: 1.3ms | Allocations: 39116)
 
 
