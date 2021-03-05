@@ -10,14 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_023925) do
+ActiveRecord::Schema.define(version: 2021_03_05_202043) do
 
   create_table "images", force: :cascade do |t|
     t.string "title"
-    t.string "url"
     t.string "alt_text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "date_created"
+    t.string "center"
+    t.string "secondary_creator"
+    t.string "media_type"
+    t.string "nasa_id"
+    t.string "keywords"
+    t.text "description"
+    t.string "thumb_href"
+    t.string "med_href"
+    t.string "orig_href"
   end
 
   create_table "user_images", force: :cascade do |t|
