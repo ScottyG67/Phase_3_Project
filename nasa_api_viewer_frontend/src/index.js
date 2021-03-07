@@ -1,4 +1,3 @@
-console.log("java index loaded")
 const NASA_URL = 'https://images-api.nasa.gov/search?q='
 const BASE_URL = "http://localhost:3000/"
 const USERS_URL = `${BASE_URL}users/`
@@ -29,7 +28,7 @@ function fetchNasaImages(searchTerm="nebula"){
     fetch(NASA_URL+searchTerm).then(res => res.json()).then(stuff => stuff.collection.items.forEach(renderNasaImages))
 }
 // doesn't work :(
-// function searchNasaApi(event) {
+function searchNasaApi(event) {
 //     event.preventDefault()
 //     let search = {
 //         text: event.target.text.value
@@ -44,18 +43,24 @@ function fetchNasaImages(searchTerm="nebula"){
 //     .then(r => r.json())
 //     .then(console.log)
       
-// }
+}
 
-function renderNasaImages(nasaImages) {
+function renderNasaImages(nasaImage) {
     const nasaImageContainer = document.querySelector('.nasaImages')
+    const imageCard = document.createElement('div')
     
     const nasaImg = document.createElement('img')
-        nasaImg.src = nasaImages.links[0].href
+        nasaImg.src = nasaImage.links[0].href
     
     const nasaTitle = document.createElement('h5')
-        nasaTitle.innerText = nasaImages.data[0].title
+        nasaTitle.innerText = nasaImage.data[0].title
+    
+    const saveButton = document.createElement("button")
+        saveButton.innerText = "Save Image"
+        saveButton.addEventListener("click",()=>{saveImage(nasaImage)})
 
-    nasaImageContainer.append(nasaImg, nasaTitle)
+    nasaImageContainer.appendChild(imageCard)
+    imageCard.append(nasaImg, nasaTitle, saveButton)
 }
 
 function renderApod(img){
@@ -75,12 +80,13 @@ function saveImage(img){
     
     image = {
         "title": img.data[0].title,
-        "thumb_href": img.href,
+        "thumb_href": img.links[0].href,
+        "href": img.href,
         "date_created": img.data[0].date_created,
         "center": img.data[0].center,
         "secondary_creator ": img.data[0].secondary_creator,
         "media_type ": img.data[0].media_type,
-        "nasa_id ": img.data[0].nasa_id,
+        "nasa_id": img.data[0].nasa_id,
         "keywords": img.data[0].keywords,
         "description": img.data[0].description
         // "med_href ":
@@ -91,7 +97,6 @@ function saveImage(img){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(image)
     }
-
-    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(console.log)
-
+    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(event.target.innerText="Image Saved")
 }
+

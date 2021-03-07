@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_202043) do
+ActiveRecord::Schema.define(version: 2021_03_07_040038) do
 
   create_table "images", force: :cascade do |t|
     t.string "title"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_202043) do
     t.string "thumb_href"
     t.string "med_href"
     t.string "orig_href"
+    t.string "href"
   end
 
   create_table "user_images", force: :cascade do |t|
