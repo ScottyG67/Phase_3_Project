@@ -2,20 +2,26 @@ const NASA_URL = 'https://images-api.nasa.gov/search?q='
 const BASE_URL = "http://localhost:3000/"
 const USERS_URL = `${BASE_URL}users/`
 const IMAGES_URL = `${BASE_URL}images/`
+const WEATHER_URL = `${BASE_URL}weathers/`
 const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    // document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
+    document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
     // console.log("DOM Loaded")
     // init()
-    // apodFetch()
-    // git status()
-    fetchNasaImages()
+    apodFetch()
+    // marsFetch()
+    // fetchNasaImages()
+    fetchWeekWeather()
+    
     
 })
 
 function init() {
-    fetch(USERS_URL+"6").then(res => res.json()).then(console.log)
+    fetch(USERS_URL).then(res => res.json()).then(users => users.forEach(renderUsersList))
+}
+function fetchWeekWeather() {
+    fetch(WEATHER_URL).then(res=>res.json()).then(weekWeather => weekWeather.forEach(renderWeather))
 }
 function apodFetch(){
     fetch("https://api.nasa.gov/planetary/apod?api_key="+NASA_API_KEY).then(res =>res.json()).then(img => renderApod(img))
@@ -27,22 +33,34 @@ function marsFetch(){
 function fetchNasaImages(searchTerm="nebula"){
     fetch(NASA_URL+searchTerm).then(res => res.json()).then(stuff => stuff.collection.items.forEach(renderNasaImages))
 }
-// doesn't work :(
+
 function searchNasaApi(event) {
-//     event.preventDefault()
-//     let search = {
-//         text: event.target.text.value
-//     }
-//     const reqObj = {
-//     headers: {'Content-Type': 'application/json'},
-//     method: 'POST',
-//     body: JSON.stringify(search)
-//     }
-//     // console.log(reqObj)
-//     fetch(NASA_URL, reqObj)
-//     .then(r => r.json())
-//     .then(console.log)
-      
+    event.preventDefault()
+    const nasaImageContainer = document.querySelector('.nasa-images')
+    nasaImageContainer.innerHTML = ''
+    let search = event.target.text.value
+
+    fetch(NASA_URL+search)
+    .then(r => r.json())
+    .then(stuff => stuff.collection.items.forEach(renderNasaImages))
+}
+
+function renderUsersList(user){
+   const userList = document.getElementById('user_list')
+   const userItem = document.createElement('li')
+        userItem.innerText = user.username
+        userItem.dataset.userId = user.id
+        userItem.addEventListener('click',userLogin)
+    userList.append(userItem)
+}
+
+function userLogin(event) {
+    
+    const userId = event.target.dataset.userId
+    sessionStorage.setItem("id",userId)
+    apodFetch()
+    fetchNasaImages()
+    
 }
 
 function renderNasaImages(nasaImage) {
@@ -69,6 +87,7 @@ function renderNasaImages(nasaImage) {
 function renderApod(img){
     const apodContainer = document.querySelector('.apod')
     const apodImage = document.createElement('img')
+    apodImage.className = ('apod-img')
     apodImage.src = img.url
     apodContainer.append(apodImage)
 }
@@ -91,7 +110,8 @@ function saveImage(img){
         "media_type ": img.data[0].media_type,
         "nasa_id": img.data[0].nasa_id,
         "keywords": img.data[0].keywords,
-        "description": img.data[0].description
+        "description": img.data[0].description,
+        "user_id":sessionStorage.getItem("id")
         // "med_href ":
         // "orig_href ":
     }
@@ -100,6 +120,46 @@ function saveImage(img){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(image)
     }
-    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(console.log)//event.target.innerText="Image Saved"
+    
+    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(event.target.innerText="Image Saved")
+}
+
+function renderWeather(dayWeather) {
+    console.log(dayWeather)
+
+    const weatherGrid = document.querySelector('.mars_grid_container')
+    const weatherCard = document.createElement('div')
+        weatherCard.innerText = dayWeather.terrestrial_date
+        weatherCard.className = "mars_weather_card"
+    const weatherDay = document.createElement('ul')
+        weatherDay.dataset.dayId = dayWeather.id
+        weatherDay.className="mars_ul"
+    const maxTemp = document.createElement('li')
+        maxTemp.innerText = "High: " + dayWeather.max_temp + " C"
+    const minTemp = document.createElement('li')
+        minTemp.innerText = "Low: " + dayWeather.min_temp + " C"
+    const conditions = document.createElement('li')
+        conditions.innerText = "Visibility: " + dayWeather.atmo_opacity
+
+        weatherDay.append(maxTemp,minTemp,conditions)
+        weatherCard.appendChild(weatherDay)
+        weatherGrid.appendChild(weatherCard)
+
+    
+
+
+    // const weatherTable = document.getElementById('weather_table')
+    // const weatherDayRow = document.createElement('tr')
+    //     weatherDayRow.dataset.dayId = dayWeather.id
+    // const maxTemp = document.createElement('td')
+    //     maxTemp.innerText = dayWeather.max_temp
+    // const minTemp = document.createElement('td')
+    //     minTemp.innerText = dayWeather.min_temp
+    // const conditions = document.createElement('td')
+    //     conditions.innerText = dayWeather.atmo_opacity
+
+    // weatherDayRow.append(maxTemp,minTemp,conditions)
+    // weatherTable.appendChild(weatherDayRow)
+
 }
 

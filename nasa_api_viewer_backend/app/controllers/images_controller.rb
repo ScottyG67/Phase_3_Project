@@ -32,6 +32,7 @@ class ImagesController < ApplicationController
             render_json(Image.find_by(nasa_id: new_image.nasa_id))
         else
             if new_image.save
+                UserImage.create(user_id: params["user_id"], image_id: new_image.id)
                 render_json(new_image)
             end
         end

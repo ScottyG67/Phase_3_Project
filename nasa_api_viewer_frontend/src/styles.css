@@ -1,6 +1,64 @@
+/* Reset browser default CSS */
+    html, body, div, span, applet, object, iframe,
+    h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, 
+    figure, figcaption, footer, header, hgroup, 
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+
+:root {
+    --background: rgba(85,214,170,.85);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #222;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+}
+
+content {
+    height: 200vh;
+    background-color: #333;
+    background-blend-mode: multiply;
+    background-size: cover;
+    display: grid;
+    place-items: center;
+}
+
+/* APoD styles */
+
+.apod-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/* NASA Image Gallery styles */
 
 .nasa-images {
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(25, 30vw);
     grid-gap: 15px;
@@ -10,9 +68,195 @@
     height: 100%;
     object-fit: cover;
 }
-.space-pic-caption {
 
-}
 .image-card {
     padding-bottom: 60px;
+}
+
+/* Mars Weather Formatting */
+.mars_grid_container{
+    /* background-image: url("https://images-assets.nasa.gov/image/PIA19164/PIA19164~orig.jpg"); */
+    display: grid;
+    grid:
+    'title title title title title'
+    '. . . . .';
+    grid-gap: 10px;
+    align-items: flex-end;
+    
+}
+.mars_weather_title{
+    text-align: center;
+    grid-area: title;
+    color: rgb(220,220,220);
+    font-size: 40px;
+}
+.mars{
+    min-height: 500px;
+    max-width: 1021px;
+    background-image: url("https://images-assets.nasa.gov/image/PIA19164/PIA19164~orig.jpg");
+}
+.mars_weather_card{
+    margin-top: 250px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(220,220,220);
+    text-align: center;
+    align-self: end;
+    /* position: absolute; */
+    
+}
+.mars_ul{
+    list-style-type:none;
+    text-align: left;
+}
+/* navigation styles start here */
+
+header {
+    margin: 0;
+    background: var(--background);
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+}
+
+.logo {
+    /* margin: 0;
+    spacing is determined by spacing and this element determines the
+    height of the nav bar */
+}
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items:center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background: white;
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+
+.nav-toggle-label span::before {
+    bottom: 40%;
+}
+.nav-toggle-label span::after {
+    top: 40%;
+}
+
+
+nav {
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background: var(--background);
+    width: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+.nav-toggle:checked ~ nav{
+    transform: scale(1,1);
+}
+.nav-toggle:checked ~ nav a{
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+/* Nav bar on screen with more than 800 pixel width */
+@media screen and (min-width: 800px) {
+    .nav-toggle-label {
+        display: none;
+    }
+
+    header {
+        display: grid;
+        grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+    }
+
+    .logo {
+        grid-column: 2 / 3;
+    }
+
+    nav {
+        all: unset;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    nav li {
+        margin-left: 2em;
+        margin-bottom: 0;
+    }
+
+    nav a {
+        opacity: 1;
+        position: relative;
+    }
+
+    nav a::before {
+        content: '';
+        display: block;
+        height: 5px;
+        background: black;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -.75em;
+        transform: scale(0,1);
+        transition: transform ease-in 250ms;
+    }
+
+    nav a:hover::before {
+        transform: scale(1,1);
+    }
 }
