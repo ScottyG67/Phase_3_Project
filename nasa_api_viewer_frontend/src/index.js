@@ -2,6 +2,7 @@ const NASA_URL = 'https://images-api.nasa.gov/search?q='
 const BASE_URL = "http://localhost:3000/"
 const USERS_URL = `${BASE_URL}users/`
 const IMAGES_URL = `${BASE_URL}images/`
+const WEATHER_URL = `${BASE_URL}weathers/`
 const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -11,11 +12,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // apodFetch()
     // marsFetch()
     // fetchNasaImages()
+    fetchWeekWeather()
+    
     
 })
 
 function init() {
     fetch(USERS_URL).then(res => res.json()).then(users => users.forEach(renderUsersList))
+}
+function fetchWeekWeather() {
+    fetch(WEATHER_URL).then(res=>res.json()).then(weekWeather => weekWeather.forEach(renderWeather))
 }
 function apodFetch(){
     fetch("https://api.nasa.gov/planetary/apod?api_key="+NASA_API_KEY).then(res =>res.json()).then(img => renderApod(img))
@@ -121,5 +127,23 @@ function saveImage(img){
     }
     
     fetch(IMAGES_URL, reqObj).then(res => res.json()).then(event.target.innerText="Image Saved")
+}
+
+function renderWeather(dayWeather) {
+    console.log(dayWeather)
+
+    const weatherTable = document.getElementById('weather_table')
+    const weatherDayRow = document.createElement('tr')
+        weatherDayRow.dataset.dayId = dayWeather.id
+    const maxTemp = document.createElement('td')
+        maxTemp.innerText = dayWeather.max_temp
+    const minTemp = document.createElement('td')
+        minTemp.innerText = dayWeather.min_temp
+    const conditions = document.createElement('td')
+        conditions.innerText = dayWeather.atmo_opacity
+
+    weatherDayRow.append(maxTemp,minTemp,conditions)
+    weatherTable.appendChild(weatherDayRow)
+
 }
 
