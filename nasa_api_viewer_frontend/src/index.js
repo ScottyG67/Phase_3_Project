@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // init()
     apodFetch()
     // marsFetch()
-    // fetchNasaImages()
+    fetchNasaImages()
     fetchWeekWeather()
     
     
