@@ -1,0 +1,18 @@
+
+.nasa-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(25, 30vw);
+    grid-gap: 15px;
+}
+.space-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.space-pic-caption {
+
+}
+.image-card {
+    padding-bottom: 60px;
+}
