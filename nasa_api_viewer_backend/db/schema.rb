@@ -10,14 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_165401) do
+ActiveRecord::Schema.define(version: 2021_03_07_040038) do
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.datetime "birthday"
+  create_table "images", force: :cascade do |t|
+    t.string "title"
+    t.string "alt_text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "date_created"
+    t.string "center"
+    t.string "secondary_creator"
+    t.string "media_type"
+    t.string "nasa_id"
+    t.string "keywords"
+    t.text "description"
+    t.string "thumb_href"
+    t.string "med_href"
+    t.string "orig_href"
+    t.string "href"
   end
 
+  create_table "user_images", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "image_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["image_id"], name: "index_user_images_on_image_id"
+    t.index ["user_id"], name: "index_user_images_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
+    t.boolean "apod"
+    t.boolean "weather"
+    t.boolean "nasaimage"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "user_images", "images"
+  add_foreign_key "user_images", "users"
 end

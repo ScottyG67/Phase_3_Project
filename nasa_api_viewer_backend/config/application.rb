@@ -46,6 +46,5 @@ module NasaApiViewerBackend
           :max_age => 0
       end
     end
-    
   end
 end
