@@ -132,18 +132,39 @@ function saveImage(img){
 function renderWeather(dayWeather) {
     console.log(dayWeather)
 
-    const weatherTable = document.getElementById('weather_table')
-    const weatherDayRow = document.createElement('tr')
-        weatherDayRow.dataset.dayId = dayWeather.id
-    const maxTemp = document.createElement('td')
-        maxTemp.innerText = dayWeather.max_temp
-    const minTemp = document.createElement('td')
-        minTemp.innerText = dayWeather.min_temp
-    const conditions = document.createElement('td')
-        conditions.innerText = dayWeather.atmo_opacity
+    const weatherGrid = document.querySelector('.mars_grid_container')
+    const weatherCard = document.createElement('div')
+        weatherCard.innerText = dayWeather.terrestrial_date
+        weatherCard.className = "mars_weather_card"
+    const weatherDay = document.createElement('ul')
+        weatherDay.dataset.dayId = dayWeather.id
+        weatherDay.className="mars_ul"
+    const maxTemp = document.createElement('li')
+        maxTemp.innerText = "High: " + dayWeather.max_temp + " C"
+    const minTemp = document.createElement('li')
+        minTemp.innerText = "Low: " + dayWeather.min_temp + " C"
+    const conditions = document.createElement('li')
+        conditions.innerText = "Visibility: " + dayWeather.atmo_opacity
 
-    weatherDayRow.append(maxTemp,minTemp,conditions)
-    weatherTable.appendChild(weatherDayRow)
+        weatherDay.append(maxTemp,minTemp,conditions)
+        weatherCard.appendChild(weatherDay)
+        weatherGrid.appendChild(weatherCard)
+
+    
+
+
+    // const weatherTable = document.getElementById('weather_table')
+    // const weatherDayRow = document.createElement('tr')
+    //     weatherDayRow.dataset.dayId = dayWeather.id
+    // const maxTemp = document.createElement('td')
+    //     maxTemp.innerText = dayWeather.max_temp
+    // const minTemp = document.createElement('td')
+    //     minTemp.innerText = dayWeather.min_temp
+    // const conditions = document.createElement('td')
+    //     conditions.innerText = dayWeather.atmo_opacity
+
+    // weatherDayRow.append(maxTemp,minTemp,conditions)
+    // weatherTable.appendChild(weatherDayRow)
 
 }
 

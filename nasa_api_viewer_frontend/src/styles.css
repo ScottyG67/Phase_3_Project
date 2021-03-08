@@ -1,6 +1,7 @@
 
 .nasa-images {
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(25, 30vw);
     grid-gap: 15px;
@@ -15,4 +16,32 @@
 }
 .image-card {
     padding-bottom: 60px;
+}
+
+/* Mars Weather Formatting */
+.mars_grid_container{
+    /* background-image: url("https://images-assets.nasa.gov/image/PIA19164/PIA19164~orig.jpg"); */
+    display: grid;
+    grid:
+    'title title title title title'
+    '. . . . .';
+    grid-gap: 10px;
+}
+.mars_weather_title{
+    text-align: center;
+    grid-area: title;
+}
+.mars{
+    min-height: 500px;
+    max-width: 1021px;
+    background-image: url("https://images-assets.nasa.gov/image/PIA19164/PIA19164~orig.jpg");
+}
+.mars_weather_card{
+    background-color: rgba(109, 108, 108, 0.5);
+    text-align: center;
+    border-collapse: collapse;
+}
+.mars_ul{
+    list-style-type:none;
+    text-align: left;
 }
