@@ -5,10 +5,10 @@ const USERS_URL = `${BASE_URL}users/`
 const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
+    // document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
     // console.log("DOM Loaded")
     // init()
-    apodFetch()
+    // apodFetch()
     // marsFetch()
     fetchNasaImages()
     
@@ -46,15 +46,20 @@ function fetchNasaImages(searchTerm="nebula"){
 // }
 
 function renderNasaImages(nasaImages) {
-    const nasaImageContainer = document.querySelector('.nasaImages')
+    const nasaImageContainer = document.querySelector('.nasa-images')
+    const card = document.createElement('div')
+    card.className = 'image-card'
     
     const nasaImg = document.createElement('img')
+        nasaImg.className = 'space-pic'
         nasaImg.src = nasaImages.links[0].href
     
-    const nasaTitle = document.createElement('h5')
+    const nasaTitle = document.createElement('span')
+        nasaTitle.className = 'space-pic-caption'
         nasaTitle.innerText = nasaImages.data[0].title
 
-    nasaImageContainer.append(nasaImg, nasaTitle)
+    nasaImageContainer.append(card)
+    card.append(nasaImg, nasaTitle)
 }
 
 function renderApod(img){
