@@ -68,9 +68,6 @@ content {
     height: 100%;
     object-fit: cover;
 }
-/* .space-pic-caption {
-
-} */
 
 .image-card {
     padding-bottom: 60px;
@@ -114,7 +111,6 @@ content {
 /* navigation styles start here */
 
 header {
-    
     margin: 0;
     background: var(--background);
     text-align: center;
