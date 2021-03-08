@@ -31,3 +31,20 @@ image1.save
 
 
 userimage1 = UserImage.create(user_id:user1.id, image_id:image1.id)
+
+resp = RestClient.get 'https://pudding.cool/2017/12/mars-data/marsWeather.json'
+weather_data = JSON.parse(resp.body)
+weather_data.map do |day|
+    Weather.create(
+        atmo_opacity:day["atmo_opacity"],
+        foreign_id: day["id"],
+        ls: day["ls"],
+        max_temp: day["max_temp"],
+        min_temp: day["min_temp"],
+        pressure: day["pressure"],
+        season: day["season"],
+        sol: day["sol"],
+        terrestrial_date: day['terrestrial_date'],
+        wind_speed: day["wind_speed"]
+    )
+end

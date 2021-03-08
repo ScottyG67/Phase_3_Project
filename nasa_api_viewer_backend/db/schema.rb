@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_040038) do
+ActiveRecord::Schema.define(version: 2021_03_08_174233) do
 
   create_table "images", force: :cascade do |t|
     t.string "title"
@@ -53,6 +53,21 @@ ActiveRecord::Schema.define(version: 2021_03_07_040038) do
     t.boolean "nasaimage"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "weathers", force: :cascade do |t|
+    t.string "atmo_opacity"
+    t.string "foreign_id"
+    t.integer "ls"
+    t.integer "max_temp"
+    t.integer "min_temp"
+    t.integer "pressure"
+    t.string "season"
+    t.integer "sol"
+    t.string "terrestrial_date"
+    t.integer "wind_speed"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "user_images", "images"
