@@ -45,6 +45,15 @@ content {
     place-items: center;
 }
 
+/* APoD styles */
+
+.apod-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 /* NASA Image Gallery styles */
 
 .nasa-images {
@@ -162,7 +171,7 @@ nav a:hover {
     opacity: 1;
     transition: opacity 250ms ease-in-out 250ms;
 }
-
+/* Nav bar on screen with more than 800 pixel width */
 @media screen and (min-width: 800px) {
     .nav-toggle-label {
         display: none;
@@ -188,7 +197,6 @@ nav a:hover {
     nav ul {
         display: flex;
         justify-content: flex-end;
-        border: 1px solid red;
     }
 
     nav li {

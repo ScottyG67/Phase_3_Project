@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
     // console.log("DOM Loaded")
     // init()
-    // apodFetch()
+    apodFetch()
     // marsFetch()
     fetchNasaImages()
     
@@ -81,6 +81,7 @@ function renderNasaImages(nasaImage) {
 function renderApod(img){
     const apodContainer = document.querySelector('.apod')
     const apodImage = document.createElement('img')
+    apodImage.className = ('apod-img')
     apodImage.src = img.url
     apodContainer.append(apodImage)
 }
