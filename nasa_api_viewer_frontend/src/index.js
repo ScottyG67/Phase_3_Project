@@ -7,15 +7,15 @@ const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 document.addEventListener("DOMContentLoaded", ()=>{
     // document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
     // console.log("DOM Loaded")
-    // init()
+    init()
     // apodFetch()
-    // git status()
-    fetchNasaImages()
+    // marsFetch()
+    // fetchNasaImages()
     
 })
 
 function init() {
-    fetch(USERS_URL+"6").then(res => res.json()).then(console.log)
+    fetch(USERS_URL).then(res => res.json()).then(users => users.forEach(renderUsersList))
 }
 function apodFetch(){
     fetch("https://api.nasa.gov/planetary/apod?api_key="+NASA_API_KEY).then(res =>res.json()).then(img => renderApod(img))
@@ -43,6 +43,24 @@ function searchNasaApi(event) {
 //     .then(r => r.json())
 //     .then(console.log)
       
+}
+
+function renderUsersList(user){
+   const userList = document.getElementById('user_list')
+   const userItem = document.createElement('li')
+        userItem.innerText = user.username
+        userItem.dataset.userId = user.id
+        userItem.addEventListener('click',userLogin)
+    userList.append(userItem)
+}
+
+function userLogin(event) {
+    
+    const userId = event.target.dataset.userId
+    sessionStorage.setItem("id",userId)
+    apodFetch()
+    fetchNasaImages()
+    
 }
 
 function renderNasaImages(nasaImage) {
@@ -91,7 +109,8 @@ function saveImage(img){
         "media_type ": img.data[0].media_type,
         "nasa_id": img.data[0].nasa_id,
         "keywords": img.data[0].keywords,
-        "description": img.data[0].description
+        "description": img.data[0].description,
+        "user_id":sessionStorage.getItem("id")
         // "med_href ":
         // "orig_href ":
     }
@@ -100,6 +119,7 @@ function saveImage(img){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(image)
     }
-    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(console.log)//event.target.innerText="Image Saved"
+    
+    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(event.target.innerText="Image Saved")
 }
 
