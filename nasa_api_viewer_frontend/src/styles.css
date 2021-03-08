@@ -27,10 +27,14 @@
     'title title title title title'
     '. . . . .';
     grid-gap: 10px;
+    align-items: flex-end;
+    
 }
 .mars_weather_title{
     text-align: center;
     grid-area: title;
+    color: rgb(220,220,220);
+    font-size: 40px;
 }
 .mars{
     min-height: 500px;
@@ -38,11 +42,16 @@
     background-image: url("https://images-assets.nasa.gov/image/PIA19164/PIA19164~orig.jpg");
 }
 .mars_weather_card{
-    background-color: rgba(109, 108, 108, 0.5);
+    margin-top: 250px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(220,220,220);
     text-align: center;
-    border-collapse: collapse;
+    align-self: end;
+    /* position: absolute; */
+    
 }
 .mars_ul{
     list-style-type:none;
     text-align: left;
+
 }
