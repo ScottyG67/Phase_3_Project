@@ -6,10 +6,10 @@ const WEATHER_URL = `${BASE_URL}weathers/`
 const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    // document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
+    document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
     // console.log("DOM Loaded")
-    init()
-    // apodFetch()
+    // init()
+    apodFetch()
     // marsFetch()
     // fetchNasaImages()
     fetchWeekWeather()
@@ -33,22 +33,16 @@ function marsFetch(){
 function fetchNasaImages(searchTerm="nebula"){
     fetch(NASA_URL+searchTerm).then(res => res.json()).then(stuff => stuff.collection.items.forEach(renderNasaImages))
 }
-// doesn't work :(
+
 function searchNasaApi(event) {
-//     event.preventDefault()
-//     let search = {
-//         text: event.target.text.value
-//     }
-//     const reqObj = {
-//     headers: {'Content-Type': 'application/json'},
-//     method: 'POST',
-//     body: JSON.stringify(search)
-//     }
-//     // console.log(reqObj)
-//     fetch(NASA_URL, reqObj)
-//     .then(r => r.json())
-//     .then(console.log)
-      
+    event.preventDefault()
+    const nasaImageContainer = document.querySelector('.nasa-images')
+    nasaImageContainer.innerHTML = ''
+    let search = event.target.text.value
+
+    fetch(NASA_URL+search)
+    .then(r => r.json())
+    .then(stuff => stuff.collection.items.forEach(renderNasaImages))
 }
 
 function renderUsersList(user){
@@ -93,6 +87,7 @@ function renderNasaImages(nasaImage) {
 function renderApod(img){
     const apodContainer = document.querySelector('.apod')
     const apodImage = document.createElement('img')
+    apodImage.className = ('apod-img')
     apodImage.src = img.url
     apodContainer.append(apodImage)
 }
