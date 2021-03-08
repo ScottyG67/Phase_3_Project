@@ -45,18 +45,18 @@ function searchNasaApi(event) {
       
 }
 
-function renderNasaImages(nasaImages) {
+function renderNasaImages(nasaImage) {
     const nasaImageContainer = document.querySelector('.nasa-images')
     const card = document.createElement('div')
     card.className = 'image-card'
     
     const nasaImg = document.createElement('img')
         nasaImg.className = 'space-pic'
-        nasaImg.src = nasaImages.links[0].href
+        nasaImg.src = nasaImage.links[0].href
     
     const nasaTitle = document.createElement('span')
         nasaTitle.className = 'space-pic-caption'
-        nasaTitle.innerText = nasaImages.data[0].title
+        nasaTitle.innerText = nasaImage.data[0].title
         
     const saveButton = document.createElement("button")
         saveButton.innerText = "Save Image"
@@ -100,6 +100,6 @@ function saveImage(img){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(image)
     }
-    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(event.target.innerText="Image Saved")
+    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(console.log)//event.target.innerText="Image Saved"
 }
 
