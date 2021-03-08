@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // console.log("DOM Loaded")
     // init()
     // apodFetch()
-    // marsFetch()
+    // git status()
     fetchNasaImages()
     
 })
