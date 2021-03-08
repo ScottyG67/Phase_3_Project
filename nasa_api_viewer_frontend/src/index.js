@@ -5,12 +5,12 @@ const IMAGES_URL = `${BASE_URL}images/`
 const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    // document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
+    document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
     // console.log("DOM Loaded")
-    init()
+    // init()
     // apodFetch()
     // marsFetch()
-    // fetchNasaImages()
+    fetchNasaImages()
     
 })
 
@@ -28,8 +28,9 @@ function fetchNasaImages(searchTerm="nebula"){
     fetch(NASA_URL+searchTerm).then(res => res.json()).then(stuff => stuff.collection.items.forEach(renderNasaImages))
 }
 // doesn't work :(
-function searchNasaApi(event) {
+// function searchNasaApi(event) {
 //     event.preventDefault()
+//     debugger
 //     let search = {
 //         text: event.target.text.value
 //     }
@@ -41,8 +42,22 @@ function searchNasaApi(event) {
 //     // console.log(reqObj)
 //     fetch(NASA_URL, reqObj)
 //     .then(r => r.json())
-//     .then(console.log)
-      
+//     .then(console.log)     
+// }
+
+function searchNasaApi(event) {
+    event.preventDefault()
+    let search = event.target.text.value
+
+    // const reqObj = {
+    // headers: {'Content-Type': 'application/json'},
+    // method: 'POST',
+    // body: JSON.stringify(search)
+    // }
+    // console.log(reqObj)
+    fetch(NASA_URL+search)
+    .then(r => r.json())
+    .then(stuff => stuff.collection.items.forEach(renderNasaImages))
 }
 
 function renderUsersList(user){
