@@ -8,8 +8,8 @@ const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 document.addEventListener("DOMContentLoaded", ()=>{
     document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
     // console.log("DOM Loaded")
-    // init()
-    apodFetch()
+    init()
+    // apodFetch()
     // marsFetch()
     // fetchNasaImages()
     fetchWeekWeather()
@@ -46,7 +46,7 @@ function searchNasaApi(event) {
 }
 
 function renderUsersList(user){
-   const userList = document.getElementById('user_list')
+   const userList = document.querySelector('.dropdown_content')
    const userItem = document.createElement('li')
         userItem.innerText = user.username
         userItem.dataset.userId = user.id
@@ -55,12 +55,22 @@ function renderUsersList(user){
 }
 
 function userLogin(event) {
-    
     const userId = event.target.dataset.userId
     sessionStorage.setItem("id",userId)
+    clearScreen()
     apodFetch()
     fetchNasaImages()
     
+}
+
+function clearScreen(){
+    const nasaImageContainer = document.querySelector('.nasa-images')
+    nasaImageContainer.innerHTML =""
+    const apodContainer = document.querySelector('.apod')
+    apodContainer.innerHTML=""
+    const weatherGrid = document.querySelector('.mars_grid_container')
+    weatherGrid.innerHTML=""
+
 }
 
 function renderNasaImages(nasaImage) {
@@ -91,11 +101,6 @@ function renderApod(img){
     apodImage.src = img.url
     apodContainer.append(apodImage)
 }
-
-// function renderMars(marsData){
-//     const marsContainer = document.querySelector('.mars')
-//     marsData.forEach(sol => console.log(sol))
-// }
 
 
 function saveImage(img){
@@ -144,22 +149,5 @@ function renderWeather(dayWeather) {
         weatherDay.append(maxTemp,minTemp,conditions)
         weatherCard.appendChild(weatherDay)
         weatherGrid.appendChild(weatherCard)
-
-    
-
-
-    // const weatherTable = document.getElementById('weather_table')
-    // const weatherDayRow = document.createElement('tr')
-    //     weatherDayRow.dataset.dayId = dayWeather.id
-    // const maxTemp = document.createElement('td')
-    //     maxTemp.innerText = dayWeather.max_temp
-    // const minTemp = document.createElement('td')
-    //     minTemp.innerText = dayWeather.min_temp
-    // const conditions = document.createElement('td')
-    //     conditions.innerText = dayWeather.atmo_opacity
-
-    // weatherDayRow.append(maxTemp,minTemp,conditions)
-    // weatherTable.appendChild(weatherDayRow)
-
 }
 
