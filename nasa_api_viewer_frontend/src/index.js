@@ -27,34 +27,13 @@ function marsFetch(){
 function fetchNasaImages(searchTerm="nebula"){
     fetch(NASA_URL+searchTerm).then(res => res.json()).then(stuff => stuff.collection.items.forEach(renderNasaImages))
 }
-// doesn't work :(
-// function searchNasaApi(event) {
-//     event.preventDefault()
-//     debugger
-//     let search = {
-//         text: event.target.text.value
-//     }
-//     const reqObj = {
-//     headers: {'Content-Type': 'application/json'},
-//     method: 'POST',
-//     body: JSON.stringify(search)
-//     }
-//     // console.log(reqObj)
-//     fetch(NASA_URL, reqObj)
-//     .then(r => r.json())
-//     .then(console.log)     
-// }
 
 function searchNasaApi(event) {
     event.preventDefault()
+    const nasaImageContainer = document.querySelector('.nasa-images')
+    nasaImageContainer.innerHTML = ''
     let search = event.target.text.value
 
-    // const reqObj = {
-    // headers: {'Content-Type': 'application/json'},
-    // method: 'POST',
-    // body: JSON.stringify(search)
-    // }
-    // console.log(reqObj)
     fetch(NASA_URL+search)
     .then(r => r.json())
     .then(stuff => stuff.collection.items.forEach(renderNasaImages))
