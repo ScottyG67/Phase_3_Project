@@ -8,7 +8,12 @@ let slideIndex = 0
 
 document.addEventListener("DOMContentLoaded", ()=>{
     document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
-    init()
+      // console.log("DOM Loaded")
+    // init()
+    apodFetch()
+    // marsFetch()
+    fetchNasaImages()
+    fetchWeekWeather()
     
 })
 
