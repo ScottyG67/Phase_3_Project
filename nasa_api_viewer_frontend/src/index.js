@@ -67,7 +67,7 @@ function fetchWeekWeather() {
 }
 
 function renderWeather(dayWeather) {
-    document.querySelector('.mars').style.display ='block'
+    document.querySelector('.mars-section').style.display ='block'
     const weatherGrid = document.querySelector('.mars_grid_container')
     const weatherCard = document.createElement('div')
         weatherCard.innerText = dayWeather.terrestrial_date
@@ -105,7 +105,6 @@ function renderApod(img){
 // NASA Image Library
 
 function fetchNasaImages(searchTerm="nebula"){
-    debugger
     fetch(NASA_URL+searchTerm).then(res => res.json()).then(stuff => stuff.collection.items.forEach(renderNasaImages))
 }
 
@@ -196,8 +195,17 @@ function renderUserImages(image){
     const nasaTitle = document.createElement('div')
         nasaTitle.className = 'user-image-title'
         nasaTitle.innerText = image.title
+
+    const prev = document.createElement('a')
+        prev.innerText = "❮"
+        prev.className = "prev"
+        prev.addEventListener('click',()=> {plusSlides(-2)})
+    const next = document.createElement('a')
+        next.innerText = "❯"
+        next.className = "next"
+        next.addEventListener('click',()=> {plusSlides(1)})
         
-    card.append(nasaImg,nasaTitle)
+    card.append(nasaImg,nasaTitle,prev,next)
 
     userImageContainer.appendChild(card)
 }
