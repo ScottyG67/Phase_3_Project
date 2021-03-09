@@ -22,6 +22,14 @@
 
 :root {
     --background: rgba(85,214,170,.85);
+    --gradient: 45deg,
+    #845ec2,
+    #d65db1,
+    #ff6f91,
+    #ff9671,
+    #ffc75f,
+    #f9f871
+    );
 }
 
 *, *::before, *::after {
@@ -111,10 +119,11 @@ content {
 /* APoD styles */
 
 .apod-img {
+    padding: 30px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 75%;
 }
 
 /* NASA Image Gallery styles */
@@ -153,7 +162,15 @@ content {
     font-size: 40px;
 }
 .mars{
+<<<<<<< HEAD
     display: none;
+=======
+    padding: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+>>>>>>> chip
     min-height: 500px;
     max-width: 1021px;
     background-image: url("https://images-assets.nasa.gov/image/PIA19164/PIA19164~orig.jpg");
@@ -172,6 +189,9 @@ content {
     text-align: left;
 }
 /* navigation styles start here */
+.space-below-header{
+    padding-bottom: 120px;
+}
 
 header {
     margin: 0;
