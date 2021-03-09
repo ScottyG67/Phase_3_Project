@@ -23,35 +23,39 @@
                 <li><a href='#'>Image Library</a></li>
               </ul>
             </nav>
-            <!-- <nav>
-              <ul id=user_list>
-              </ul>
-            </nav> -->
             <label for='nav-toggle' class='nav-toggle-label'><span></span></label>
           </header>
           <div id=user_bar>
             <ul id=user_list>
             </ul>
           </div>
-          <!-- <div class='test_button'></div> -->
           <div class="mars">
             <div class ="mars_grid_container">
               <h3 class='mars_weather_title'>Weather Conditions on Mars</h3>             
             </div>
           </div>
 
+          
+          <div id ="user_images" class="user-images-section">
+            <h3>Saved Images</h3>
 
-          <div class="apod">
+            <div class="user_images_container"></div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
           </div>
 
-          <!-- <div class ='weather'> -->
-            <!-- <iframe src='https://mars.nasa.gov/layout/embed/image/mslweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe>          </div> -->
+          <h3>NASA Picture of the Day</h3>
+          <div class="apod">
+          </div>
 
           <form id="nasa-image-search" action="/form/submit" method="GET"> 
             <input type="text" name="text" class="search" placeholder="Search here!">
             <input type="submit" name="submit" class="submit" value="Search">
           </form>
-          <div class="nasa-images">
+          <h3>NASA Pictures</h3>
+          <div id= "nasa-images" class="nasa-images">
           </div>
         </body>
 </html>

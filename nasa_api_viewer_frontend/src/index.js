@@ -4,22 +4,18 @@ const USERS_URL = `${BASE_URL}users/`
 const IMAGES_URL = `${BASE_URL}images/`
 const WEATHER_URL = `${BASE_URL}weathers/`
 const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
+let slideIndex = 0
 
 document.addEventListener("DOMContentLoaded", ()=>{
     document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
-    // console.log("DOM Loaded")
     init()
-    // apodFetch()
-    // marsFetch()
-    // fetchNasaImages()
-    fetchWeekWeather()
-    
     
 })
 
 function init() {
     fetch(USERS_URL).then(res => res.json()).then(users => users.forEach(renderUsersList))
 }
+
 function fetchWeekWeather() {
     fetch(WEATHER_URL).then(res=>res.json()).then(weekWeather => weekWeather.forEach(renderWeather))
 }
@@ -36,7 +32,7 @@ function fetchNasaImages(searchTerm="nebula"){
 
 function searchNasaApi(event) {
     event.preventDefault()
-    const nasaImageContainer = document.querySelector('.nasa-images')
+    const nasaImageContainer = document.querySelector('#nasa-images')
     nasaImageContainer.innerHTML = ''
     let search = event.target.text.value
 
@@ -50,31 +46,44 @@ function renderUsersList(user){
    const userItem = document.createElement('li')
         userItem.innerText = user.username
         userItem.dataset.userId = user.id
+        userItem.dataset.apod = user.apod
+        userItem.dataset.weather = user.weather
+        userItem.dataset.nasaImage = user.nasaimage
         userItem.addEventListener('click',userLogin)
     userList.append(userItem)
 }
 
 function userLogin(event) {
-    const userId = event.target.dataset.userId
+    const userId = this.dataset.userId
     sessionStorage.setItem("id",userId)
     clearScreen()
-    apodFetch()
-    fetchNasaImages()
+    debugger
+    if(this.dataset.apod === 'true'){
+        apodFetch()
+    }
+
+    if(this.dataset.nasaImage === 'true'){
+        fetchNasaImages()
+    }
+
+    if(this.dataset.weather === 'true'){
+        fetchWeekWeather()
+    }
+
+    fetchUserImages()
     
 }
 
 function clearScreen(){
-    const nasaImageContainer = document.querySelector('.nasa-images')
-    nasaImageContainer.innerHTML =""
-    const apodContainer = document.querySelector('.apod')
-    apodContainer.innerHTML=""
-    const weatherGrid = document.querySelector('.mars_grid_container')
-    weatherGrid.innerHTML=""
-
+    document.querySelector('#nasa-images').innerHTML =''
+    document.querySelector('.apod').innerHTML=''
+    document.querySelector('.mars_grid_container').innerHTML=''
+    document.querySelector('.user_images_container').innerHTML=''
+    document.querySelector('.user-images-section').style.display = "none"
 }
 
 function renderNasaImages(nasaImage) {
-    const nasaImageContainer = document.querySelector('.nasa-images')
+    const nasaImageContainer = document.querySelector('#nasa-images')
     const card = document.createElement('div')
     card.className = 'image-card'
     
@@ -130,8 +139,7 @@ function saveImage(img){
 }
 
 function renderWeather(dayWeather) {
-    console.log(dayWeather)
-
+    document.querySelector('.mars').style.display ='block'
     const weatherGrid = document.querySelector('.mars_grid_container')
     const weatherCard = document.createElement('div')
         weatherCard.innerText = dayWeather.terrestrial_date
@@ -150,4 +158,79 @@ function renderWeather(dayWeather) {
         weatherCard.appendChild(weatherDay)
         weatherGrid.appendChild(weatherCard)
 }
+
+function fetchUserImages() {
+    const userId = sessionStorage.getItem("id")
+
+    fetch(USERS_URL+userId).then(res => res.json()).then(user => {
+        document.querySelector('.user-images-section').style.display = "block"
+        user.images.forEach(renderUserImages)
+        showSlides()
+    })
+
+}
+
+function renderUserImages(image){
+    console.log("creating card")
+    
+    const userImageContainer = document.querySelector(".user_images_container")
+    const card = document.createElement('div')
+    card.classList = 'user-image-card', 'fade'
+    
+    const nasaImg = document.createElement('img')
+        nasaImg.className = 'space-pic'
+        nasaImg.src = image.thumb_href
+    
+    const nasaTitle = document.createElement('div')
+        nasaTitle.className = 'user-image-title'
+        nasaTitle.innerText = image.title
+        
+    card.append(nasaImg,nasaTitle)
+
+    userImageContainer.appendChild(card)
+}
+
+// Slide Show Functionality //
+
+// Next/previous controls
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+  
+// Thumbnail image controls
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+// set slides to show
+//   function showSlides(n) {
+//       debugger
+//     let i;
+//     let slides = document.querySelectorAll(".user-image-card");
+//     // let dots = document.querySelector("dot");
+//     if (n > slides.length) {slideIndex = 1}
+//     if (n < 1) {slideIndex = slides.length}
+//     for (i = 0; i < slides.length; i++) {
+//         slides[i].style.display = "none";
+//     }
+//     // for (i = 0; i < dots.length; i++) {
+//     //     dots[i].className = dots[i].className.replace(" active", "");
+//     // }
+//     slides[slideIndex-1].style.display = "block";
+//     // dots[slideIndex-1].className += " active";
+// }
+
+// automatically rotate through
+function showSlides() {  
+    let slides = document.querySelectorAll(".user-image-card");
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
+  }
 
