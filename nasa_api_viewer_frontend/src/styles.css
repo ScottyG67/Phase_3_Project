@@ -22,7 +22,8 @@
 
 :root {
     --background: rgba(85,214,170,.85);
-    --gradient: 45deg,
+    --offwhite: hsl(0, 0%, 90%);
+    --gradient: 45deg,(
     #845ec2,
     #d65db1,
     #ff6f91,
@@ -30,6 +31,12 @@
     #ffc75f,
     #f9f871
     );
+}
+
+h2{
+    text-align: center;
+    color: var(--offwhite);
+    font-size: 40px;
 }
 
 *, *::before, *::after {
@@ -42,6 +49,8 @@ body {
     background: #222;
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
+    letter-spacing: .8px;
+    color: var(--offwhite);
 }
 
 content {
@@ -69,14 +78,13 @@ content {
     width:50%;
     margin-left: auto;
     margin-right: auto;
-    
-
-
 }
+
 .prev, .next {
     cursor: pointer;
-    position: absolute;
-    top: 50%;
+    position: absolute; 
+    /* text-align: center; */
+    top: 5%;
     width: auto;
     margin-top: 50px;
     padding: 16px;
@@ -87,8 +95,9 @@ content {
     border-radius: 0 3px 3px 0;
     user-select: none;
   }
+  
 .next {
-    right: 0;
+    right: 30%;
     border-radius: 3px 0 0 3px;
 }
 .prev:hover, .next:hover {
@@ -112,11 +121,15 @@ content {
     to {opacity: 1}
   }
 
-.user-image-title{
+/* .user-image-title{
 
-}
+} */
 
 /* APoD styles */
+
+.picture-of-the-day{
+    display: none;
+}
 
 .apod-img {
     padding: 30px;
@@ -127,6 +140,9 @@ content {
 }
 
 /* NASA Image Gallery styles */
+.nasa-images-section {
+    display: none;
+}
 
 .nasa-images {
     display: grid;
@@ -161,16 +177,12 @@ content {
     color: rgb(220,220,220);
     font-size: 40px;
 }
-.mars{
-<<<<<<< HEAD
-    display: none;
-=======
+.mars-section{
     padding: 200px;
-    display: block;
+    display: none;
     margin-left: auto;
     margin-right: auto;
     padding: 1em;
->>>>>>> chip
     min-height: 500px;
     max-width: 1021px;
     background-image: url("https://images-assets.nasa.gov/image/PIA19164/PIA19164~orig.jpg");
@@ -178,7 +190,7 @@ content {
 .mars_weather_card{
     margin-top: 250px;
     background-color: rgba(0, 0, 0, 0.5);
-    color: rgb(220,220,220);
+    color: var(--offwhite);
     text-align: center;
     align-self: end;
     /* position: absolute; */
@@ -203,11 +215,12 @@ header {
     /* padding: 100px; */
 }
 
-.logo {
-    /* margin: 0;
+/* .logo {
+    margin: 0;
     spacing is determined by spacing and this element determines the
-    height of the nav bar */
-}
+    height of the nav bar 
+}*/
+
 .nav-toggle {
     display: none;
 }
