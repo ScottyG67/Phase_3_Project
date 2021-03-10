@@ -7,73 +7,96 @@ const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    // add event listener to nav bar to toggle APIs
-    const apodNav = document.getElementById('apod-nav')
-    apodNav.addEventListener('click', apiToggle)
-    const marsNav = document.getElementById('mars-nav')
-    marsNav.addEventListener('click', apiToggle)
-    const nasaNav = document.getElementById('nasa-nav')
-    nasaNav.addEventListener('click', apiToggle)
-    document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
-    // build groups list and enable login
-    fetchUserList()    
+    initializeNavigation()
+    fetchUserList()
+    document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)    
 })
-function fetchUserList() {
-    fetch(USERS_URL).then(res => res.json()).then(users => users.forEach(renderUsersList))
+
+function initializeNavigation(){
+    document.getElementById('apod-nav').addEventListener('click', apiToggle)
+    document.getElementById('mars-nav').addEventListener('click', apiToggle)
+    document.getElementById('nasa-nav').addEventListener('click', apiToggle)
+    document.getElementById('lib-nav').addEventListener('click',apiToggle)
 }
+
+function fetchUserList() {
+    const userList = document.querySelector('.dropdown_content')
+    fetch(USERS_URL).then(res => res.json()).then(users => {userList.innerHTML=""
+     users.forEach(renderUsersList)})
+}
+
 // User / Interest group functions
 function renderUsersList(user){
     const userList = document.querySelector('.dropdown_content')
     const userItem = document.createElement('li')
          userItem.innerText = user.username
-         userItem.dataset.userId = user.id
+         userItem.dataset.id = user.id
          userItem.dataset.apod = user.apod
          userItem.dataset.weather = user.weather
-         userItem.dataset.nasaImage = user.nasaimage
+         userItem.dataset.nasaimage = user.nasaimage
+         userItem.dataset.userImage = user.userimage
          userItem.addEventListener('click',userLogin)
      userList.append(userItem)
  }
  
  function userLogin(event) {
-    //  setSessionStorage(event)
-    sessionStorage.setItem("id",this.dataset.userId)
-    sessionStorage.setItem("apod",this.dataset.apod)
-    sessionStorage.setItem("weather",this.dataset.weather)
-    sessionStorage.setItem('nasaimage',this.dataset.nasaImage)
+     const user_info = this.dataset
+     setSessionStorage(user_info)
      clearScreen()
-     if(sessionStorage.getItem("apod") === 'true'){
-         apodFetch()
-     }
-     if(sessionStorage.getItem('nasaimage') === 'true'){
-         document.querySelector('.nasa-images-section').style.display= 'block'
-         fetchNasaImages(this.innerText)
-     }
-     if(sessionStorage.getItem("weather") === 'true'){
-         fetchWeekWeather()
-     }
-     if(sessionStorage.getItem("userimage") === 'true'){
-        fetchUserImages()
-     }
-    //  debugger
-     
+     selectivelyRenderApi()
  }
-//  function setSessionStorage(event) {
-//      debugger
-//     sessionStorage.setItem("id",this.dataset.userId)
-//     sessionStorage.setItem("apod",this.dataset.apod)
-//     sessionStorage.setItem("weather",this.dataset.weather)
-//     sessionStorage.setItem('nasaimage',this.dataset.nasaImage)
-//  }
- 
+ function setSessionStorage(item) {
+    sessionStorage.setItem("id",item.id)
+    sessionStorage.setItem("apod",item.apod)
+    sessionStorage.setItem("weather",item.weather)
+    sessionStorage.setItem('nasaimage',item.nasaimage)
+    sessionStorage.setItem('userimage',item.userimage)
+ }
  function clearScreen(){
-     document.querySelector('#nasa-images').innerHTML =''
-     document.querySelector('.nasa-images-section').style.display= 'none'
-     document.querySelector('.apod').innerHTML=''
-     document.querySelector('.mars_grid_container').innerHTML=''
-     document.querySelector('.user_images_container').innerHTML=''
-     document.querySelector('.user-images-section').style.display = "none"
+    document.querySelector('.nasa-images-section').style.display= 'none'
+    document.querySelector('#nasa-images').innerHTML =''
+     
+    document.querySelector(".picture-of-the-day-section").style.display = "none"
+    document.querySelector('.apod').innerHTML=''
+
+    document.querySelector('.mars-section').style.display = 'none'
+    document.querySelector('.mars_grid_container').innerHTML=''
+
+    document.querySelector('.user-images-section').style.display = "none"
+    document.querySelector('.user_images_container').innerHTML='' 
  }
 
+
+ function selectivelyRenderApi(){
+    if(sessionStorage.getItem("apod") === 'true'){
+        document.querySelector(".picture-of-the-day-section").style.display = "block"
+        document.querySelector('.apod').innerHTML=''
+        apodFetch()
+    } else(
+        document.querySelector(".picture-of-the-day-section").style.display = "none"
+    )
+    if(sessionStorage.getItem('nasaimage') === 'true'){
+        document.querySelector('.nasa-images-section').style.display= 'block'
+        document.querySelector('#nasa-images').innerHTML =''
+        fetchNasaImages(this.innerText)
+    } else(
+        document.querySelector('.nasa-images-section').style.display = 'none'
+        )
+    if(sessionStorage.getItem("weather") === 'true'){
+        document.querySelector('.mars-section').style.display = 'block'
+        document.querySelector('.mars_grid_container').innerHTML=''
+        fetchWeekWeather()
+    } else(
+        document.querySelector('.mars-section').style.display = 'none'
+        )
+    if(sessionStorage.getItem("userimage") === 'true'){
+        document.querySelector('.user-images-section').style.display = "block"
+        document.querySelector('.user_images_container').innerHTML='' 
+       fetchUserImages()
+    } else (
+        document.querySelector('.user-images-section').style.display = 'none'
+        )
+ }
 
 
 function apiToggle(event){
@@ -98,18 +121,13 @@ function apiToggle(event){
         method: 'PATCH',
         body: JSON.stringify(updatedView)
     }
-    debugger
     fetch(USERS_URL+userId, reqObj)
     .then(res => res.json())
     .then(updatedUser => {
         fetchUserList()
-        sessionStorage.setItem("id",updatedUser.id)
-        sessionStorage.setItem("apod",updatedUser.apod)
-        sessionStorage.setItem("weather",updatedUser.weather)
-        sessionStorage.setItem('nasaimage',updatedUser.nasaImage)
-
+        setSessionStorage(updatedUser)
+        selectivelyRenderApi()
     })
-    
 }
 
 // Mars Weather
@@ -125,7 +143,7 @@ function fetchWeekWeather() {
 }
 
 function renderWeather(dayWeather) {
-    document.querySelector('.mars-section').style.display ='block'
+    
     const weatherGrid = document.querySelector('.mars_grid_container')
     const weatherCard = document.createElement('div')
         weatherCard.innerText = dayWeather.terrestrial_date
@@ -233,7 +251,6 @@ function fetchUserImages() {
     const userId = sessionStorage.getItem("id")
 
     fetch(USERS_URL+userId).then(res => res.json()).then(user => {
-        document.querySelector('.user-images-section').style.display = "block"
         user.images.forEach(renderUserImages)
         showSlides()
     })

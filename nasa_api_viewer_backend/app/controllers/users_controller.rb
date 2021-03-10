@@ -27,6 +27,10 @@ class UsersController < ApplicationController
         if !params[:nasaimage].nil?
             user.nasaimage = params[:nasaimage]
         end
+
+        if !params[:userimage].nil?
+            user.userimage = params[:userimage]
+        end
         if user.save
             render json: user
         end
