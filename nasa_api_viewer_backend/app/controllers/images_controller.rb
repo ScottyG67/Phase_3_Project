@@ -24,12 +24,13 @@ class ImagesController < ApplicationController
         new_image.description = params["description"]#
         new_image.href = params["href"]
         
-        # new_image.med_href = 
-        # new_image.orig_href = 
         
         #check if image already exists
+
         if Image.find_by(nasa_id: new_image.nasa_id)
-            render_json(Image.find_by(nasa_id: new_image.nasa_id))
+            existing_image = Image.find_by(nasa_id: new_image.nasa_id)
+            UserImage.create(user_id: params["user_id"], image_id: existing_image.id)
+            render_json(existing_image)
         else
             if new_image.save
                 UserImage.create(user_id: params["user_id"], image_id: new_image.id)
@@ -57,7 +58,8 @@ class ImagesController < ApplicationController
                             rel:"preview",
                             render:"image"
                             }],
-                        href: new_image.href
+                        href: new_image.href,
+                        rails_id: new_image.id
                     } 
     end
 

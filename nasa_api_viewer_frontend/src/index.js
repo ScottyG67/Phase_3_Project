@@ -183,9 +183,12 @@ function fetchNasaImages(searchTerm="nebula"){
     let nasaIdArray = []
     //get array of currently saved image ids for logged in user
     fetch(USERS_URL+sessionStorage.getItem("id")).then(res => res.json()).then(user => {
-        user.images.forEach(image => nasaIdArray.push(image.nasa_id))})
-    fetch(NASA_URL+searchTerm).then(res => res.json())
-    .then(nasaImages => nasaImages.collection.items.forEach(nasaImage => renderNasaImages(nasaImage, nasaIdArray)))
+        user.images.forEach(image => nasaIdArray.push(image.nasa_id))
+
+        fetch(NASA_URL+searchTerm).then(res => res.json())
+        .then(nasaImages => nasaImages.collection.items.forEach(nasaImage => renderNasaImages(nasaImage, nasaIdArray)))
+    })
+    
 }
 
 
@@ -202,20 +205,23 @@ function renderNasaImages(nasaImage,nasaIdArray) {
     const nasaTitle = document.createElement('span')
         nasaTitle.className = 'space-pic-caption'
         nasaTitle.innerText = nasaImage.data[0].title
-        
-    const saveButton = document.createElement("button")
+  
     // check if image has already been saved
+    const saveButton = document.createElement("button")
+        saveButton.innerText = "Save Image"
+        saveButton.addEventListener("click",()=>{saveImage(nasaImage)})
+
     
         if(nasaIdArray.includes(card.id)){
-            makeUnsaveButton (saveButton, nasaImage)
+            saveButton.style.display = "none"
+            // makeUnsaveButton (saveButton, nasaImage)
             // saveButton.innerText = "Unsave"
             // saveButton.addEventListener("click",()=>{unsaveImage(nasaImage)})
-        } else {
-            makeSaveButton (saveButton, nasaImage)
         }
 
     nasaImageContainer.append(card)
-    card.append(nasaImg, nasaTitle, saveButton)
+    card.append(nasaImg, nasaTitle,saveButton)
+
 }
 
 function makeUnsaveButton (button, image) {
@@ -226,6 +232,7 @@ function makeUnsaveButton (button, image) {
 function makeSaveButton (button, image){
     button.innerText = "Save Image"
     button.addEventListener("click",()=>{saveImage(image)})
+    card.append(button)
 }
 
 function saveImage(img){
@@ -254,28 +261,36 @@ function saveImage(img){
     fetch(IMAGES_URL, reqObj).then(res => res.json()).then(savedImage => {renderUserImages(savedImage)
         const card = document.getElementById(`${savedImage.data[0].nasa_id}`)
         const button = card.querySelector('button')
-        makeUnsaveButton (button, savedImage)
+        button.style.display ="none"
+        // alert("Image Saved")
         })
 }
 
 function unsaveImage(img){
     image = {
-        "nasa_id": img.data[0].nasa_id,
-        "user_id":sessionStorage.getItem("id")
-        // "med_href ":
-        // "orig_href ":
+        "image_id": img.rails_id,
+        "user_id":sessionStorage.getItem("id"),
+        "nasa_id":img.data[0].nasa_id
     }
     const reqObj = {
         method:"DELETE",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(image)
     }
+
     
-    fetch("http://localhost:3000/userimages", reqObj).then(res => res.json()).then(() => {
-        debugger
-        event.target.innerText = "Save Image"
-        event.target.addEventListener("click",()=>{saveImage(img)})
-        })
+    fetch("http://localhost:3000/userimages", reqObj)
+    .then().then(_=>{
+        
+        const nasaImageCard = document.getElementById(image.nasa_id)
+        nasaImageCard.querySelector('button').style.display = "block"
+        const userImageCard = document.getElementById(sessionStorage.id+"_"+image.nasa_id)
+        plusSlides(0)
+        userImageCard.remove()    
+    })
+    // .then()
+        // event.target.innerText = "Save Image"
+        // event.target.addEventListener("click",()=>{saveImage(img)})
 }
 
 
@@ -295,17 +310,19 @@ function fetchUserImages() {
     const userId = sessionStorage.getItem("id")
 
     fetch(USERS_URL+userId+"/images").then(res => res.json()).then(images => {
-        console.log("user Image Fetch Complete")
         // document.querySelector('.user-images-section').style.display = "block"
         images.forEach(renderUserImages)
         showSlides()
     })
 }
 
-function renderUserImages(image){
-       
+function renderUserImages(image){     
     const userImageContainer = document.querySelector(".user_images_container")
     const card = document.createElement('div')
+    const userId = sessionStorage.getItem('id')
+    card.id = userId +"_"+image.data[0].nasa_id
+
+
     card.classList = 'user-image-card', 'fade'
     
     const nasaImg = document.createElement('img')
@@ -315,6 +332,8 @@ function renderUserImages(image){
     const nasaTitle = document.createElement('div')
         nasaTitle.className = 'user-image-title'
         nasaTitle.innerText = image.data[0].title
+    const unsaveButton =document.createElement('button')
+        makeUnsaveButton(unsaveButton,image)
 
     const prev = document.createElement('a')
         prev.innerText = "❮"
@@ -325,7 +344,7 @@ function renderUserImages(image){
         next.className = "next"
         next.addEventListener('click',()=> {plusSlides(0)})
         
-    card.append(nasaImg,nasaTitle,prev,next)
+    card.append(nasaImg,nasaTitle,unsaveButton,prev,next)
 
     userImageContainer.appendChild(card)
 }
@@ -343,12 +362,15 @@ function plusSlides(n) {
 
 // automatically rotate through
 function showSlides() {  
-    
     let slides = document.querySelectorAll(".user-image-card")
-    slides.forEach(slide => slide.style.display ="none")
-    if (slideIndex > slides.length) {slideIndex = 1}
-    if (slideIndex < 1 ){slideIndex = slides.length}
-    slides[slideIndex-1].style.display = "block";
-    slideIndex++
-    slideChangeTimeout = setTimeout(showSlides,5000)
+    if (slides.length > 0){
+        slides.forEach(slide => slide.style.display ="none")
+        if (slideIndex > slides.length) {slideIndex = 1}
+        if (slideIndex < 1 ){slideIndex = slides.length}
+        slides[slideIndex-1].style.display = "block";
+        slideIndex++
+        slideChangeTimeout = setTimeout(showSlides,5000)
+    } else {
+        document.querySelector('.user-images-section').style.display = "none"
+    }
   }

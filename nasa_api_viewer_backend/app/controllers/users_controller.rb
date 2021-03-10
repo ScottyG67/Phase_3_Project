@@ -62,7 +62,8 @@ private
                     rel:"preview",
                     render:"image"
                     }],
-                href: image.href
+                href: image.href,
+                rails_id: image.id
                 }
             end
         render json: formatted_images
