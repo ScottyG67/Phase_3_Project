@@ -23,7 +23,7 @@
 :root {
     --background: rgba(85,214,170,.85);
     --offwhite: hsl(0, 0%, 90%);
-    --gradient: 45deg,(
+    --gradient: linear-gradient(45deg,
     #845ec2,
     #d65db1,
     #ff6f91,
@@ -147,7 +147,7 @@ content {
 .nasa-images {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(25, 30vw);
+    grid-template-rows: repeat(auto, 30vw);
     grid-gap: 15px;
 }
 .space-pic {
@@ -208,6 +208,8 @@ content {
 header {
     margin: 0;
     background: var(--background);
+    /* background-size: 300%;
+    background-position: left; */
     text-align: center;
     position: fixed;
     z-index: 999;
@@ -305,6 +307,7 @@ nav span:hover {
 
 
 .dropdown{
+    cursor: pointer;
     grid-column: 1/2;
     justify-content: right;
 }
@@ -313,7 +316,7 @@ nav span:hover {
     display: none;
     position: absolute;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     z-index: 1;
     background: var(--background);
   }
@@ -354,6 +357,7 @@ nav span:hover {
     }
 
     nav span {
+        cursor: pointer;
         opacity: 1;
         position: relative;
     }
