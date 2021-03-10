@@ -34,7 +34,7 @@ function renderUsersList(user){
          userItem.dataset.apod = user.apod
          userItem.dataset.weather = user.weather
          userItem.dataset.nasaimage = user.nasaimage
-         userItem.dataset.userImage = user.userimage
+         userItem.dataset.userimage = user.userimage
          userItem.addEventListener('click',userLogin)
      userList.append(userItem)
  }
@@ -103,13 +103,12 @@ function apiToggle(event){
     const userId = sessionStorage.getItem("id")
     let bool = sessionStorage.getItem(event.target.dataset.api)
     
-    console.log(bool)
+
     if(bool == 'true'){
         bool = false
     }else{
         bool = true
     }
-    console.log(bool)
 
     let updatedView = {
     }
@@ -208,14 +207,10 @@ function renderNasaImages(nasaImage,nasaIdArray) {
     // check if image has already been saved
     
         if(nasaIdArray.includes(card.id)){
-            console.log ('exists')
             makeUnsaveButton (saveButton, nasaImage)
             // saveButton.innerText = "Unsave"
             // saveButton.addEventListener("click",()=>{unsaveImage(nasaImage)})
         } else {
-            console.log(card.id)
-            console.log(nasaIdArray)
-            console.log('new')
             makeSaveButton (saveButton, nasaImage)
         }
 
@@ -300,14 +295,14 @@ function fetchUserImages() {
     const userId = sessionStorage.getItem("id")
 
     fetch(USERS_URL+userId+"/images").then(res => res.json()).then(images => {
-        document.querySelector('.user-images-section').style.display = "block"
+        console.log("user Image Fetch Complete")
+        // document.querySelector('.user-images-section').style.display = "block"
         images.forEach(renderUserImages)
         showSlides()
     })
 }
 
 function renderUserImages(image){
-    console.log('rendering user image')
        
     const userImageContainer = document.querySelector(".user_images_container")
     const card = document.createElement('div')
