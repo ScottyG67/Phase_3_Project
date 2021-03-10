@@ -10,9 +10,9 @@ User.destroy_all
 Image.destroy_all
 
 
-user1 = User.create(username: "Mars", email: "mars@spaceballs.com", password: "password", apod: true, weather: true, nasaimage: true)
-user2 = User.create(username: "Nebula", email: "nebula@spaceballs.com", password: "password", apod: true, weather: false, nasaimage: true)
-user3 = User.create(username: "Earth", email: "earth@spaceballs.com", password: "password", apod: true, weather: false, nasaimage: true)
+user1 = User.create(username: "Mars", email: "mars@spaceballs.com", password: "password", apod: true, weather: true, nasaimage: true, userimage: true)
+user2 = User.create(username: "Nebula", email: "nebula@spaceballs.com", password: "password", apod: true, weather: false, nasaimage: true, userimage: true)
+user3 = User.create(username: "Earth", email: "earth@spaceballs.com", password: "password", apod: true, weather: false, nasaimage: true, userimage: true)
 
 # image1 = Image.create(url: "https://apod.nasa.gov/apod/image/1612/ngc6357_nasa_3600.jpg", date_created: '2011-08-10T21:00:09Z', center: 'JPL',)
 

@@ -16,13 +16,20 @@ class UsersController < ApplicationController
             except:  ["created_at", "updated_at"]
         )
     end
-    def updated
+    def update
         user = User.find_by(id: params[:id])
-        user.apod = params[:apod]
-        
-        t.boolean "apod"
-        t.boolean "weather"
-        t.boolean "nasaimage"
+        if !params[:apod].nil?
+            user.apod = params[:apod]
+        end
+        if !params[:weather].nil?
+            user.weather = params[:weather]
+        end
+        if !params[:nasaimage].nil?
+            user.nasaimage = params[:nasaimage]
+        end
+        if user.save
+            render json: user
+        end
 
-    end
+    end 
 end

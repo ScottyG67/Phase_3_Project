@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_174233) do
+ActiveRecord::Schema.define(version: 2021_03_10_181852) do
 
   create_table "images", force: :cascade do |t|
     t.string "title"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_174233) do
     t.boolean "apod"
     t.boolean "weather"
     t.boolean "nasaimage"
+    t.boolean "userimage"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
