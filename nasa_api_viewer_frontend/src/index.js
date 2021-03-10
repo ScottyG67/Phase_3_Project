@@ -7,12 +7,20 @@ const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
+    // add event listener to nav bar to toggle APIs
+    const apodNav = document.getElementById('apod-nav')
+    apodNav.addEventListener('click', apiToggle)
+    const marsNav = document.getElementById('mars-nav')
+    marsNav.addEventListener('click', apiToggle)
+    const nasaNav = document.getElementById('nasa-nav')
+    nasaNav.addEventListener('click', apiToggle)
     document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)
     // build groups list and enable login
-    fetch(USERS_URL).then(res => res.json()).then(users => users.forEach(renderUsersList))
-    
+    fetchUserList()    
 })
-
+function fetchUserList() {
+    fetch(USERS_URL).then(res => res.json()).then(users => users.forEach(renderUsersList))
+}
 // User / Interest group functions
 function renderUsersList(user){
     const userList = document.querySelector('.dropdown_content')
@@ -27,22 +35,35 @@ function renderUsersList(user){
  }
  
  function userLogin(event) {
-     const userId = this.dataset.userId
-     sessionStorage.setItem("id",userId)
+    //  setSessionStorage(event)
+    sessionStorage.setItem("id",this.dataset.userId)
+    sessionStorage.setItem("apod",this.dataset.apod)
+    sessionStorage.setItem("weather",this.dataset.weather)
+    sessionStorage.setItem('nasaimage',this.dataset.nasaImage)
      clearScreen()
-     if(this.dataset.apod === 'true'){
+     if(sessionStorage.getItem("apod") === 'true'){
          apodFetch()
      }
-     if(this.dataset.nasaImage === 'true'){
+     if(sessionStorage.getItem('nasaimage') === 'true'){
          document.querySelector('.nasa-images-section').style.display= 'block'
          fetchNasaImages(this.innerText)
      }
-     if(this.dataset.weather === 'true'){
+     if(sessionStorage.getItem("weather") === 'true'){
          fetchWeekWeather()
      }
+     if(sessionStorage.getItem("userimage") === 'true'){
+        fetchUserImages()
+     }
+    //  debugger
      
-     fetchUserImages()
  }
+//  function setSessionStorage(event) {
+//      debugger
+//     sessionStorage.setItem("id",this.dataset.userId)
+//     sessionStorage.setItem("apod",this.dataset.apod)
+//     sessionStorage.setItem("weather",this.dataset.weather)
+//     sessionStorage.setItem('nasaimage',this.dataset.nasaImage)
+//  }
  
  function clearScreen(){
      document.querySelector('#nasa-images').innerHTML =''
@@ -53,6 +74,43 @@ function renderUsersList(user){
      document.querySelector('.user-images-section').style.display = "none"
  }
 
+
+
+function apiToggle(event){
+    const userId = sessionStorage.getItem("id")
+    let bool = sessionStorage.getItem(event.target.dataset.api)
+    
+    console.log(bool)
+    if(bool == 'true'){
+        bool = false
+    }else{
+        bool = true
+    }
+    console.log(bool)
+
+    let updatedView = {
+    }
+    updatedView.id = +userId
+    updatedView[event.target.dataset.api] =  bool
+   
+    let reqObj = {
+        headers: {'Content-Type': 'application/json'},
+        method: 'PATCH',
+        body: JSON.stringify(updatedView)
+    }
+    debugger
+    fetch(USERS_URL+userId, reqObj)
+    .then(res => res.json())
+    .then(updatedUser => {
+        fetchUserList()
+        sessionStorage.setItem("id",updatedUser.id)
+        sessionStorage.setItem("apod",updatedUser.apod)
+        sessionStorage.setItem("weather",updatedUser.weather)
+        sessionStorage.setItem('nasaimage',updatedUser.nasaImage)
+
+    })
+    
+}
 
 // Mars Weather
 

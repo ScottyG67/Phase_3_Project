@@ -282,7 +282,7 @@ nav li {
     margin-left: 1em;
 }
 
-nav a {
+nav span {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
@@ -291,14 +291,14 @@ nav a {
     transition: opacity 150ms ease-in-out;
 }
 
-nav a:hover {
+nav span:hover {
     color: #000;
 }
 
 .nav-toggle:checked ~ nav{
     transform: scale(1,1);
 }
-.nav-toggle:checked ~ nav a{
+.nav-toggle:checked ~ nav span{
     opacity: 1;
     transition: opacity 250ms ease-in-out 250ms;
 }
@@ -321,7 +321,7 @@ nav a:hover {
 
 
 /* Nav bar on screen with more than 800 pixel width */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 300px) {
     .nav-toggle-label {
         display: none;
     }
@@ -353,12 +353,12 @@ nav a:hover {
         margin-bottom: 0;
     }
 
-    nav a {
+    nav span {
         opacity: 1;
         position: relative;
     }
 
-    nav a::before {
+    nav span::before {
         content: '';
         display: block;
         height: 5px;
@@ -371,7 +371,7 @@ nav a:hover {
         transition: transform ease-in 250ms;
     }
 
-    nav a:hover::before {
+    nav span:hover::before {
         transform: scale(1,1);
     }
 }
