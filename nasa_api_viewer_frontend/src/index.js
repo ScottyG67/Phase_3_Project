@@ -105,13 +105,20 @@ function renderApod(img){
 // NASA Image Library
 
 function fetchNasaImages(searchTerm="nebula"){
-    fetch(NASA_URL+searchTerm).then(res => res.json()).then(stuff => stuff.collection.items.forEach(renderNasaImages))
+    let nasaIdArray = []
+    //get array of currently saved image ids for logged in user
+    fetch(USERS_URL+sessionStorage.getItem("id")).then(res => res.json()).then(user => {
+        user.images.forEach(image => nasaIdArray.push(image.nasa_id))})
+    fetch(NASA_URL+searchTerm).then(res => res.json())
+    .then(nasaImages => nasaImages.collection.items.forEach(nasaImage => renderNasaImages(nasaImage, nasaIdArray)))
 }
 
-function renderNasaImages(nasaImage) {
+
+function renderNasaImages(nasaImage,nasaIdArray) {
     const nasaImageContainer = document.querySelector('#nasa-images')
     const card = document.createElement('div')
     card.className = 'image-card'
+    card.id = nasaImage.data[0].nasa_id
     
     const nasaImg = document.createElement('img')
         nasaImg.className = 'space-pic'
@@ -122,11 +129,52 @@ function renderNasaImages(nasaImage) {
         nasaTitle.innerText = nasaImage.data[0].title
         
     const saveButton = document.createElement("button")
-        saveButton.innerText = "Save Image"
-        saveButton.addEventListener("click",()=>{saveImage(nasaImage)})
+    // check if image has already been saved
+    
+        if(nasaIdArray.includes(card.id)){
+            console.log ('exists')
+            makeUnsaveButton (saveButton, nasaImage)
+            // saveButton.innerText = "Unsave"
+            // saveButton.addEventListener("click",()=>{unsaveImage(nasaImage)})
+        } else {
+            console.log(card.id)
+            console.log(nasaIdArray)
+            console.log('new')
+            makeSaveButton (saveButton, nasaImage)
+        }
 
     nasaImageContainer.append(card)
     card.append(nasaImg, nasaTitle, saveButton)
+}
+
+function makeUnsaveButton (button, image) {
+    button.innerText = "Unsave"
+    button.addEventListener("click",()=>{unsaveImage(image)})
+}
+
+function makeSaveButton (button, image){
+    button.innerText = "Save Image"
+    button.addEventListener("click",()=>{saveImage(image)})
+}
+
+function unsaveImage(img){
+    image = {
+        "nasa_id": img.data[0].nasa_id,
+        "user_id":sessionStorage.getItem("id")
+        // "med_href ":
+        // "orig_href ":
+    }
+    const reqObj = {
+        method:"DELETE",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(image)
+    }
+    
+    fetch("http://localhost:3000/userimages", reqObj).then(res => res.json()).then(() => {
+        debugger
+        event.target.innerText = "Save Image"
+        event.target.addEventListener("click",()=>{saveImage(img)})
+        })
 }
 
 
@@ -153,18 +201,20 @@ function saveImage(img){
         body: JSON.stringify(image)
     }
     
-    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(event.target.innerText="Image Saved")
+    fetch(IMAGES_URL, reqObj).then(res => res.json()).then(savedImage => {renderUserImages(savedImage)
+        const card = document.getElementById(`${savedImage.data[0].nasa_id}`)
+        const button = card.querySelector('button')
+        makeUnsaveButton (button, savedImage)
+        })
 }
+
 
 function searchNasaApi(event) {
     event.preventDefault()
     const nasaImageContainer = document.querySelector('#nasa-images')
     nasaImageContainer.innerHTML = ''
     let search = event.target.text.value
-
-    fetch(NASA_URL+search)
-    .then(r => r.json())
-    .then(stuff => stuff.collection.items.forEach(renderNasaImages))
+    fetchNasaImages(search)
 }
 
 
@@ -174,27 +224,27 @@ function searchNasaApi(event) {
 function fetchUserImages() {
     const userId = sessionStorage.getItem("id")
 
-    fetch(USERS_URL+userId).then(res => res.json()).then(user => {
+    fetch(USERS_URL+userId+"/images").then(res => res.json()).then(images => {
         document.querySelector('.user-images-section').style.display = "block"
-        user.images.forEach(renderUserImages)
+        images.forEach(renderUserImages)
         showSlides()
     })
-
 }
 
 function renderUserImages(image){
-   
+    console.log('rendering user image')
+       
     const userImageContainer = document.querySelector(".user_images_container")
     const card = document.createElement('div')
     card.classList = 'user-image-card', 'fade'
     
     const nasaImg = document.createElement('img')
         nasaImg.className = 'space-pic'
-        nasaImg.src = image.thumb_href
+        nasaImg.src = image.links[0].href
     
     const nasaTitle = document.createElement('div')
         nasaTitle.className = 'user-image-title'
-        nasaTitle.innerText = image.title
+        nasaTitle.innerText = image.data[0].title
 
     const prev = document.createElement('a')
         prev.innerText = "❮"
@@ -203,7 +253,7 @@ function renderUserImages(image){
     const next = document.createElement('a')
         next.innerText = "❯"
         next.className = "next"
-        next.addEventListener('click',()=> {plusSlides(1)})
+        next.addEventListener('click',()=> {plusSlides(0)})
         
     card.append(nasaImg,nasaTitle,prev,next)
 
@@ -218,15 +268,13 @@ let slideChangeTimeout
 function plusSlides(n) {
     clearTimeout(slideChangeTimeout)
     slideIndex += n
-    console.log(slideIndex)
     showSlides();
 }
 
 // automatically rotate through
 function showSlides() {  
-
+    
     let slides = document.querySelectorAll(".user-image-card")
-
     slides.forEach(slide => slide.style.display ="none")
     if (slideIndex > slides.length) {slideIndex = 1}
     if (slideIndex < 1 ){slideIndex = slides.length}
