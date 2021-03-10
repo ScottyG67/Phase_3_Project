@@ -302,9 +302,7 @@ function searchNasaApi(event) {
     fetchNasaImages(search)
 }
 
-
 // Display User Saved Images
-
 
 function fetchUserImages() {
     const userId = sessionStorage.getItem("id")
