@@ -157,27 +157,6 @@ function makeSaveButton (button, image){
     button.addEventListener("click",()=>{saveImage(image)})
 }
 
-function unsaveImage(img){
-    image = {
-        "nasa_id": img.data[0].nasa_id,
-        "user_id":sessionStorage.getItem("id")
-        // "med_href ":
-        // "orig_href ":
-    }
-    const reqObj = {
-        method:"DELETE",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(image)
-    }
-    
-    fetch("http://localhost:3000/userimages", reqObj).then(res => res.json()).then(() => {
-        debugger
-        event.target.innerText = "Save Image"
-        event.target.addEventListener("click",()=>{saveImage(img)})
-        })
-}
-
-
 function saveImage(img){
     
     image = {
@@ -205,6 +184,26 @@ function saveImage(img){
         const card = document.getElementById(`${savedImage.data[0].nasa_id}`)
         const button = card.querySelector('button')
         makeUnsaveButton (button, savedImage)
+        })
+}
+
+function unsaveImage(img){
+    image = {
+        "nasa_id": img.data[0].nasa_id,
+        "user_id":sessionStorage.getItem("id")
+        // "med_href ":
+        // "orig_href ":
+    }
+    const reqObj = {
+        method:"DELETE",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(image)
+    }
+    
+    fetch("http://localhost:3000/userimages", reqObj).then(res => res.json()).then(() => {
+        debugger
+        event.target.innerText = "Save Image"
+        event.target.addEventListener("click",()=>{saveImage(img)})
         })
 }
 
