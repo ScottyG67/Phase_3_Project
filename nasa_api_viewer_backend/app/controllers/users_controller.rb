@@ -45,7 +45,10 @@ class UsersController < ApplicationController
     end
 
     def create
-        byebug
+        new_user = User.new(username: params[:username], apod: false, weather: false, nasaimage: false)
+        if new_user.save
+            render json: new_user
+        end
 
     end
 

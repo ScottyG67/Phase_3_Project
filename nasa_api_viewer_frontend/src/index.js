@@ -37,11 +37,18 @@ function renderUsersList(user){
          userItem.dataset.nasaimage = user.nasaimage
          userItem.dataset.userimage = user.userimage
          userItem.addEventListener('click',userLogin)
+         console.log("user ready")
      userList.append(userItem)
  }
  
  function userLogin(event) {
-     const user_info = this.dataset
+     let user_info
+     if(event.target){
+       user_info = this.dataset
+     } else {
+         user_info = event.dataset
+     }
+     
      setSessionStorage(user_info)
      clearScreen()
      selectivelyRenderApi()
@@ -54,6 +61,8 @@ function renderUsersList(user){
     sessionStorage.setItem('userimage',item.userimage)
  }
  function clearScreen(){
+     document.querySelector('.home_screen').style.display ="none"
+
     document.querySelector('.nasa-images-section').style.display= 'none'
     document.querySelector('#nasa-images').innerHTML =''
      
@@ -379,7 +388,6 @@ function showSlides() {
 
   function newGroup (event) {
       event.preventDefault()
-      debugger
 
       const newUser ={
           username: event.target.username.value
@@ -389,5 +397,11 @@ function showSlides() {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(newUser)
         }
-    fetch(USERS_URL,reqObj).then(res => res.json()).then(group => console.log(group))
+    fetch(USERS_URL,reqObj).then(res => res.json())
+    .then(async (group) => {
+            const result = await fetchUserList()
+            const userList = document.querySelector('.dropdown_content')
+            userLogin(userList.lastChild)
+        }
+        )
   }
