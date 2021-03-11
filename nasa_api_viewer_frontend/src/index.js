@@ -7,6 +7,7 @@ const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
+    
     initializeNavigation()
     fetchUserList()
     document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)    
@@ -60,7 +61,7 @@ function renderUsersList(user){
  function logout(event){
      clearScreen()
      document.querySelector('nav ul').style.display = 'none'
-     event.target.display = 'none'
+     document.querySelector('.logout').style.display = 'none'
      document.querySelector('form').style.display="block"
     document.querySelector('.home_screen').style.display ="block"
     sessionStorage.clear()
