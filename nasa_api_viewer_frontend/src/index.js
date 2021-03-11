@@ -7,6 +7,7 @@ const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
+    
     initializeNavigation()
     fetchUserList()
     document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)    
@@ -427,3 +428,15 @@ function showSlides() {
         alert("Group name cannot be blank")
     }
   }
+
+
+//   jquery
+$( function() {
+    $( "#nasa-images" ).sortable();
+    $( "#nasa-images" ).disableSelection();
+  } );
+
+$( function() {
+    $("#logged_in").sortable();
+    $("#logged_in").disableSelection();
+})
