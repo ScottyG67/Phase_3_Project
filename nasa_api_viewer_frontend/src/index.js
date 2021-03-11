@@ -17,6 +17,7 @@ function initializeNavigation(){
     document.getElementById('mars-nav').addEventListener('click', apiToggle)
     document.getElementById('nasa-nav').addEventListener('click', apiToggle)
     document.getElementById('lib-nav').addEventListener('click',apiToggle)
+    document.querySelector('.new_group_form').addEventListener('submit',newGroup)
 }
 
 function fetchUserList() {
@@ -40,11 +41,32 @@ function renderUsersList(user){
  }
  
  function userLogin(event) {
-     const user_info = this.dataset
+     let user_info
+     if(event.target){
+       user_info = this.dataset
+     } else {
+         user_info = event.dataset
+     }
+     
      setSessionStorage(user_info)
      clearScreen()
+     document.querySelector('nav ul').style.display = 'flex'
+     const logoutBtn = document.querySelector('.logout')
+        logoutBtn.style.display = 'block'
+        logoutBtn.addEventListener('click',logout)
      selectivelyRenderApi()
  }
+
+ function logout(event){
+     clearScreen()
+     document.querySelector('nav ul').style.display = 'none'
+     event.target.display = 'none'
+     document.querySelector('form').style.display="block"
+    document.querySelector('.home_screen').style.display ="block"
+    sessionStorage.clear()
+    // alert("you have been logged out")
+ }
+
  function setSessionStorage(item) {
     sessionStorage.setItem("id",item.id)
     sessionStorage.setItem("apod",item.apod)
@@ -52,7 +74,11 @@ function renderUsersList(user){
     sessionStorage.setItem('nasaimage',item.nasaimage)
     sessionStorage.setItem('userimage',item.userimage)
  }
+
  function clearScreen(){
+    document.querySelector('form').style.display="none"
+    document.querySelector('.home_screen').style.display ="none"
+
     document.querySelector('.nasa-images-section').style.display= 'none'
     document.querySelector('#nasa-images').innerHTML =''
      
@@ -369,6 +395,30 @@ function showSlides() {
         slideIndex++
         slideChangeTimeout = setTimeout(showSlides,5000)
     } else {
+        alert("Your library is empty. Please save some images first")
         document.querySelector('.user-images-section').style.display = "none"
     }
+  }
+
+
+  // New Group
+
+  function newGroup (event) {
+      event.preventDefault()
+
+      const newUser ={
+          username: event.target.username.value
+      }
+      const reqObj = {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newUser)
+        }
+    fetch(USERS_URL,reqObj).then(res => res.json())
+    .then(async (group) => {
+            const result = await fetchUserList()
+            const userList = document.querySelector('.dropdown_content')
+            userLogin(userList.lastChild)
+        }
+        )
   }

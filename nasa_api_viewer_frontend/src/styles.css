@@ -32,12 +32,23 @@
     #f9f871
     );
 }
+.home_screen{
+    text-align: center;
+}
+
+/* h1{    
+    text-align: center;
+    color: var(--offwhite);
+    font-size: 60px;}
 
 h2{
     text-align: center;
     color: var(--offwhite);
     font-size: 40px;
 }
+h3{
+    text-align: center;
+} */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -60,6 +71,11 @@ content {
     background-size: cover;
     display: grid;
     place-items: center;
+}
+
+button {
+    border-radius: 12pt;
+    background-color: rgb(174, 83, 51);
 }
 
 /* User Images Slideshow */
@@ -271,6 +287,7 @@ nav {
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 400ms ease-in-out;
+    display: none;
 }
 
 nav ul {
@@ -347,8 +364,10 @@ nav span:hover {
     }
 
     nav ul {
-        display: flex;
+        /* display: flex; */
+        display: none;
         justify-content: flex-end;
+        
     }
 
     nav li {
@@ -377,5 +396,11 @@ nav span:hover {
 
     nav span:hover::before {
         transform: scale(1,1);
+    }
+
+    .logout {
+        grid-column: 4/4;
+        display: none;
+        
     }
 }

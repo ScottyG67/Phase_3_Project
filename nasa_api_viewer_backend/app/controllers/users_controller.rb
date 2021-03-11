@@ -44,6 +44,14 @@ class UsersController < ApplicationController
         build_image_structure(images)
     end
 
+    def create
+        new_user = User.new(username: params[:username], apod: false, weather: false, nasaimage: false)
+        if new_user.save
+            render json: new_user
+        end
+
+    end
+
 
 private
     def build_image_structure(images)
