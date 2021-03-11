@@ -17,6 +17,7 @@ function initializeNavigation(){
     document.getElementById('mars-nav').addEventListener('click', apiToggle)
     document.getElementById('nasa-nav').addEventListener('click', apiToggle)
     document.getElementById('lib-nav').addEventListener('click',apiToggle)
+    document.querySelector('.new_group_form').addEventListener('submit',newGroup)
 }
 
 function fetchUserList() {
@@ -371,4 +372,22 @@ function showSlides() {
     } else {
         document.querySelector('.user-images-section').style.display = "none"
     }
+  }
+
+
+  // New Group
+
+  function newGroup (event) {
+      event.preventDefault()
+      debugger
+
+      const newUser ={
+          username: event.target.username.value
+      }
+      const reqObj = {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newUser)
+        }
+    fetch(USERS_URL,reqObj).then(res => res.json()).then(group => console.log(group))
   }

@@ -44,6 +44,11 @@ class UsersController < ApplicationController
         build_image_structure(images)
     end
 
+    def create
+        byebug
+
+    end
+
 
 private
     def build_image_structure(images)

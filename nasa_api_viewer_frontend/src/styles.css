@@ -32,12 +32,23 @@
     #f9f871
     );
 }
+.home_screen{
+    text-align: center;
+}
+
+/* h1{    
+    text-align: center;
+    color: var(--offwhite);
+    font-size: 60px;}
 
 h2{
     text-align: center;
     color: var(--offwhite);
     font-size: 40px;
 }
+h3{
+    text-align: center;
+} */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -269,6 +280,7 @@ nav {
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 400ms ease-in-out;
+    display: none;
 }
 
 nav ul {
