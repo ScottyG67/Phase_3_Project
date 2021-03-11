@@ -73,6 +73,11 @@ content {
     place-items: center;
 }
 
+button {
+    border-radius: 12pt;
+    background-color: rgb(174, 83, 51);
+}
+
 /* User Images Slideshow */
 .user-images-section{
     display: none;
@@ -356,8 +361,10 @@ nav span:hover {
     }
 
     nav ul {
-        display: flex;
+        /* display: flex; */
+        display: none;
         justify-content: flex-end;
+        
     }
 
     nav li {
@@ -385,5 +392,11 @@ nav span:hover {
 
     nav span:hover::before {
         transform: scale(1,1);
+    }
+
+    .logout {
+        grid-column: 4/4;
+        display: none;
+        
     }
 }
