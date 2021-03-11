@@ -5,8 +5,11 @@
           <meta charset="utf-8">
           <title>NASA API Viewer</title>
           <link rel="stylesheet" href="src/styles.css">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->    
+          <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
           <script src="./src/index.js"></script>
+
         </head>
         <body>
           <header>
@@ -37,44 +40,40 @@
 
           <div class='space-below-header'></div>
           <div class='test_button'></div>
+
           <div class = 'home_screen'>
             <h1>NASA API Viewer</h1>
             <h3>The Best Place on your local server to interact with a curated collection of NASA's APIs</h3>
             <img src ="APOD_Backup.jpg">
           </div>
 
-          <div class="mars-section">
-            <div class ="mars_grid_container"></div>
-          </div>
+          <div id="logged_in">
 
-          
-          <div id ="user_images" class="user-images-section">
-            <h2>Saved Images</h2>
+            <div class="mars-section">
+              <div class ="mars_grid_container"></div>
+            </div>
 
-            <div class="user_images_container"></div>
+            
+            <div id ="user_images" class="user-images-section">
+              <h2>Saved Images</h2>
+              <div class="user_images_container"></div>
+            </div>
 
-            <!-- <a class="prev" onclick="plusSlides(-2)">&#10094;</a> -->
-            <!-- <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-
-          </div>
-
-          <div class= 'picture-of-the-day-section'>
-            <h2>NASA Picture of the Day</h2>
-            <div class="apod"></div>
-          </div>
+            <div class= 'picture-of-the-day-section'>
+              <h2>NASA Picture of the Day</h2>
+              <div class="apod"></div>
+            </div>
 
           <div class="nasa-images-section">
             <h2>NASA Pictures</h2>
-
             <form id="nasa-image-search" action="/form/submit" method="GET"> 
               <input type="text" name="text" class="search" placeholder="Search here!">
               <input type="submit" name="submit" class="submit" value="Search">
             </form>
+            <div id= "nasa-images" class="nasa-images"></div>
 
-            <div id= "nasa-images" class="nasa-images">
-
-            </div>
           </div>
+        </div>
           <footer><p>All information and images sourced from <a href ="https://api.nasa.gov/">Nasa Open APIs</a></p></footer>
 
         </body>

@@ -423,3 +423,15 @@ function showSlides() {
         }
         )
   }
+
+
+//   jquery
+$( function() {
+    $( "#nasa-images" ).sortable();
+    $( "#nasa-images" ).disableSelection();
+  } );
+
+$( function() {
+    $("#logged_in").sortable();
+    $("#logged_in").disableSelection();
+})
