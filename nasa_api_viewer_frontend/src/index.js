@@ -34,6 +34,7 @@ function renderUsersList(user){
     const userItem = document.createElement('li')
          userItem.innerText = user.username
          userItem.dataset.id = user.id
+         userItem.dataset.username = user.username
          userItem.dataset.apod = user.apod
          userItem.dataset.weather = user.weather
          userItem.dataset.nasaimage = user.nasaimage
@@ -71,6 +72,7 @@ function renderUsersList(user){
 
  function setSessionStorage(item) {
     sessionStorage.setItem("id",item.id)
+    sessionStorage.setItem("imgsearch",item.username)
     sessionStorage.setItem("apod",item.apod)
     sessionStorage.setItem("weather",item.weather)
     sessionStorage.setItem('nasaimage',item.nasaimage)
@@ -96,6 +98,7 @@ function renderUsersList(user){
 
 
  function selectivelyRenderApi(){
+     
     if(sessionStorage.getItem("apod") === 'true'){
         document.querySelector(".picture-of-the-day-section").style.display = "block"
         document.querySelector('.apod').innerHTML=''
@@ -106,7 +109,7 @@ function renderUsersList(user){
     if(sessionStorage.getItem('nasaimage') === 'true'){
         document.querySelector('.nasa-images-section').style.display= 'block'
         document.querySelector('#nasa-images').innerHTML =''
-        fetchNasaImages(this.innerText)
+        fetchNasaImages(sessionStorage.getItem('imgsearch'))
     } else(
         document.querySelector('.nasa-images-section').style.display = 'none'
         )
@@ -221,6 +224,7 @@ function fetchNasaImages(searchTerm="nebula"){
 
 
 function renderNasaImages(nasaImage,nasaIdArray) {
+    
     const nasaImageContainer = document.querySelector('#nasa-images')
     const card = document.createElement('div')
     card.className = 'image-card'
@@ -228,6 +232,7 @@ function renderNasaImages(nasaImage,nasaIdArray) {
     
     const nasaImg = document.createElement('img')
         nasaImg.className = 'space-pic'
+        
         nasaImg.src = nasaImage.links[0].href
     
     const nasaTitle = document.createElement('span')
@@ -242,9 +247,6 @@ function renderNasaImages(nasaImage,nasaIdArray) {
     
         if(nasaIdArray.includes(card.id)){
             saveButton.style.display = "none"
-            // makeUnsaveButton (saveButton, nasaImage)
-            // saveButton.innerText = "Unsave"
-            // saveButton.addEventListener("click",()=>{unsaveImage(nasaImage)})
         }
 
     nasaImageContainer.append(card)
@@ -397,7 +399,6 @@ function showSlides() {
         slideIndex++
         slideChangeTimeout = setTimeout(showSlides,5000)
     } else {
-        // alert("Your library is empty. Please save some images first")
         document.querySelector('.user-images-section').style.display = "none"
     }
   }
@@ -590,8 +591,6 @@ function walkThrough () {
         top.style.height = "5%"
         top.style.top = "0%"
         top.style.left = "0%"
-        debugger
-
         setTimeout(logOutTour,3000)
     }
 
@@ -615,18 +614,13 @@ function walkThrough () {
         setTimeout(endTour,3000)
     }
 
-
     function endTour(){
-
         text.style.display = "none"
         left.style.display = "none"
         bottom.style.display = "none"
         right.style.display = "none"
         top.style.display = "none"
     }
-    
-
-    
 }
 
 //   jquery
