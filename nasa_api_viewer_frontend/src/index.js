@@ -60,7 +60,7 @@ function renderUsersList(user){
  function logout(event){
      clearScreen()
      document.querySelector('nav ul').style.display = 'none'
-     event.target.display = 'none'
+     document.querySelector('.logout').style.display = 'none'
      document.querySelector('form').style.display="block"
     document.querySelector('.home_screen').style.display ="block"
     sessionStorage.clear()
@@ -395,7 +395,7 @@ function showSlides() {
         slideIndex++
         slideChangeTimeout = setTimeout(showSlides,5000)
     } else {
-        alert("Your library is empty. Please save some images first")
+        // alert("Your library is empty. Please save some images first")
         document.querySelector('.user-images-section').style.display = "none"
     }
   }
@@ -405,6 +405,8 @@ function showSlides() {
 
   function newGroup (event) {
       event.preventDefault()
+
+      if(event.target.username.value !==""){
 
       const newUser ={
           username: event.target.username.value
@@ -421,4 +423,7 @@ function showSlides() {
             userLogin(userList.lastChild)
         }
         )
+    } else {
+        alert("Group name cannot be blank")
+    }
   }
