@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
     
     initializeNavigation()
     fetchUserList()
-    document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi)    
+    document.getElementById('nasa-image-search').addEventListener('submit', searchNasaApi) 
+    document.getElementById('walkthrough_btn').addEventListener('click',walkThrough) 
 })
 
 function initializeNavigation(){
@@ -429,6 +430,204 @@ function showSlides() {
     }
   }
 
+function walkThrough () {
+    const left = document.getElementById("overlay_left")
+    const bottom = document.getElementById("overlay_bottom")
+    const right = document.getElementById("overlay_right")
+    const top = document.getElementById("overlay_top")
+    const text = document.querySelector(".overlay_text")
+    text.style.display = "block"
+    intro()
+    // navBar()
+
+    function intro(){
+        
+        text.innerText = "Welcome to the NASA API Viewer. Let us show you around"
+    
+        left.style.display = "block"
+        left.style.width = "100%"
+        left.style.height = "100%"
+        left.style.top = "0%"
+        left.style.left = "0%"
+
+        bottom.style.display = "none"
+        right.style.display = "none"
+        top.style.display = "none"
+        setTimeout(groupSection,4000)
+    }
+    
+
+    // stop One //
+    function groupSection(){
+
+        text.innerText = "You can select interest groups here"
+        text.style.top = "10%"
+        text.style.left = "0%"
+
+        left.style.display = "block"
+        left.style.width = "7%"
+        left.style.height = "100%"
+        left.style.top = "0%"
+        left.style.left = "0%"
+
+        bottom.style.display = "block"
+        bottom.style.width = "93%"
+        bottom.style.height = "95%"
+        bottom.style.top = "5%"
+        bottom.style.left = "7%"
+
+        right.style.display = "block"
+        right.style.width = "87%"
+        right.style.height = "5%"
+        right.style.top = "0%"
+        right.style.left = "13%"
+
+        top.style.display = "none"
+        
+        setTimeout(newGroupSection,3000)
+    }
+
+    function newGroupSection(){
+        text.innerText = "And make a new group over here"
+        text.style.top = "10%"
+        text.style.left = "60%"
+
+        left.style.display = "block"
+        left.style.width = "85%"
+        left.style.height = "100%"
+        left.style.top = "0%"
+        left.style.left = "0%"
+    
+        bottom.style.display = "block"
+        bottom.style.width = "15%"
+        bottom.style.height = "95%"
+        bottom.style.top = "5%"
+        bottom.style.left = "85%"
+    
+        right.style.display = "block"
+        right.style.width = "5%"
+        right.style.height = "5%"
+        right.style.top = "0%"
+        right.style.left = "95%"
+    
+        top.style.display = "none"
+        setTimeout(tourLogin,3000)
+    }
+
+    function tourLogin(){
+        text.style.display = "none"
+
+        left.style.width = "100%"
+        left.style.height = "100%"
+        left.style.top = "0%"
+        left.style.left = "0%"
+        bottom.style.display = "none"
+        right.style.display = "none"
+        top.style.display = "none"
+        const userList = document.querySelector('.dropdown_content')
+        userLogin(userList.firstChild)
+        setTimeout(navBar,1000)
+    }
+    
+    function navBar(){
+        text.innerText = "Click on these buttons to fetch and display cool information."
+        text.style.display ="Block"
+        text.style.top = "15%"
+        text.style.left = "15%"
+
+        left.style.display = "block"
+        left.style.width = "25%"
+        left.style.height = "100%"
+        left.style.top = "0%"
+        left.style.left = "0%"
+    
+        bottom.style.display = "block"
+        bottom.style.width = "50%"
+        bottom.style.height = "92%"
+        bottom.style.top = "8%"
+        bottom.style.left = "25%"
+    
+        right.style.display = "block"
+        right.style.width = "25%"
+        right.style.height = "100%"
+        right.style.top = "0%"
+        right.style.left = "75%"
+    
+        top.style.display = "none"
+        setTimeout(navBar2,4000)
+    }
+    function navBar2(){
+        text.innerText = "Your selections will be saved so next time you log in you will be shown the same information."
+
+        setTimeout(logOutShow,4000)
+    }
+
+    function logOutShow(){
+        text.innerText = "You can log out at any time over here."
+        text.style.top = "10%"
+        text.style.left = "60%"
+
+        left.style.display = "block"
+        left.style.width = "80%"
+        left.style.height = "95%"
+        left.style.top = "5%"
+        left.style.left = "0%"
+    
+        bottom.style.display = "block"
+        bottom.style.width = "20%"
+        bottom.style.height = "90%"
+        bottom.style.top = "10%"
+        bottom.style.left = "80%"
+    
+        right.style.display = "none"
+        right.style.width = "5%"
+        right.style.height = "5%"
+        right.style.top = "0%"
+        right.style.left = "95%"
+    
+        top.style.display = "block"
+        top.style.width = "100%"
+        top.style.height = "5%"
+        top.style.top = "0%"
+        top.style.left = "0%"
+        debugger
+
+        setTimeout(logOutTour,3000)
+    }
+
+    function logOutTour(){
+        logout()
+        goodbye()
+    }
+    function goodbye(){
+        text.innerText = "This concludes our tour. Enjoy!"
+        text.style.top = "20%"
+        text.style.left = "30%"
+        left.style.display = "block"
+        left.style.width = "100%"
+        left.style.height = "100%"
+        left.style.top = "0%"
+        left.style.left = "0%"
+
+        bottom.style.display = "none"
+        right.style.display = "none"
+        top.style.display = "none"
+        setTimeout(endTour,3000)
+    }
+
+
+    function endTour(){
+
+        text.style.display = "none"
+        left.style.display = "none"
+        bottom.style.display = "none"
+        right.style.display = "none"
+        top.style.display = "none"
+    }
+    
+
+    
+}
 
 //   jquery
 $( function() {
