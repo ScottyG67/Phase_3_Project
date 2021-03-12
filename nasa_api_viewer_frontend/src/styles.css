@@ -85,11 +85,11 @@
 #walkthrough_btn {
     font-weight: bold;
     background: rgba(220, 220, 200, .2);
-    letter-spacing: 1.75px;
+    letter-spacing: 1.85px;
     color: var(--offwhite);
     text-decoration: inherit;
     font-family: system-ui;
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 1rem 2rem;
     margin-top: 45px;
     margin-bottom: 45px;
@@ -429,6 +429,8 @@ nav span:hover {
     font-size: 24px;
     text-align: center;
     width: 509px;
+    /* width:auto; */
+    
   }
   .dropdown_content > li::before {
     content: '';
