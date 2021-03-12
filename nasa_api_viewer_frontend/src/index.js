@@ -352,7 +352,7 @@ function renderUserImages(image){
     card.classList = 'user-image-card', 'fade'
     
     const nasaImg = document.createElement('img')
-        nasaImg.className = 'space-pic'
+        nasaImg.classList.add('space-pic', 'saved-pic')
         nasaImg.src = image.links[0].href
     
     const nasaTitle = document.createElement('div')

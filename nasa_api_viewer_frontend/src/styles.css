@@ -21,7 +21,7 @@
     }
 
 :root {
-    --background: rgb(85,214,170);
+    --background: #05b1a8;
     --offwhite: hsl(0, 0%, 90%);
     --gradient: linear-gradient(
         45deg,
@@ -45,6 +45,7 @@
 .home_screen{
     text-align: center;
 }
+
 .home_screen_image {
     padding: 2em;
 
@@ -52,6 +53,7 @@
 .home_screen_h3 {
     font-family: basic-sans, sans-serif;
     font-weight: 400;
+    transform: translateY(-90%);
 }
 .home_screen_h1 {
     font-family: basic-sans, sans-serif;
@@ -74,9 +76,50 @@
     background: rgba(220, 220, 200, .2);
     width: 60vw;
     padding: 1em;
+    /* border: 10px;
+    border-style: solid; */
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.2);}
+
+#walkthrough_btn {
+    font-weight: bold;
+    background: rgba(220, 220, 200, .2);
+    letter-spacing: 1.75px;
+    color: var(--offwhite);
+    text-decoration: inherit;
+    font-family: system-ui;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    /* box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.404);} */
 }
+.border-gradient {
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: var(--gradient2);
+    animation: 10s rotate linear infinite;
+    --angle: 0deg;
+    border-image: linear-gradient(var(--angle),  #610498,
+    #2c0785,
+    #090979,
+    #072b90,
+    #05b1a8,
+    #0cd003) 1;
+    animation: 40s rotate linear infinite;
+  }
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
 
 /* h1{    
     text-align: center;
@@ -87,6 +130,7 @@ h2{
     text-align: center;
     color: var(--offwhite);
     font-size: 40px;
+    padding: 20px;
 }
 /* h3{
     text-align: center;
@@ -132,16 +176,24 @@ button {
 
 .user-image-card{
     display: none;
-    width:50%;
+    height: 500;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.saved-pic {
+    width: 70%;
+    height: 600px;
+    object-fit: cover;
 }
 
 .prev, .next {
     cursor: pointer;
     position: absolute; 
     /* text-align: center; */
-    top: 5%;
+    top: 30%;
+    transform: translateY(-50%);
     width: auto;
     margin-top: 50px;
     padding: 16px;
@@ -154,11 +206,15 @@ button {
   }
   
 .next {
-    right: 30%;
+    /* right: 100px; */
+    right: 15%;
+}
+.prev {
+    left: 15%;
     border-radius: 3px 0 0 3px;
 }
 .prev:hover, .next:hover {
-    background-color: rgb(250,250,250);
+    background-color: rgba(125,125,125,20);
   }
 
   .fade {
@@ -178,9 +234,9 @@ button {
     to {opacity: 1}
   }
 
-/* .user-image-title{
-
-} */
+.user-image-title{
+    text-align: center;
+}
 
 /* APoD styles */
 
@@ -218,9 +274,10 @@ button {
 }
 
 .center-form {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
+    display: block;
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 /* Mars Weather Formatting */
@@ -382,8 +439,33 @@ nav span:hover {
     z-index: 1;
     background: var(--background);
   }
+.dropdown_content > li{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    text-align: center;
+    width: 256px;
+  }
+  .dropdown_content > li::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: black;
+    position: flex;
+    left: 0;
+    right: 0;
+    top: -.75em;
+    transform: scale(0,1);
+    transition: transform ease-in 250ms;
+}
+.dropdown_content > li:hover::before {
+    transform: scale(1,1);
+}
 .dropdown:hover .dropdown_content {display: block;}
 
+.new_group_form {
+    padding-top: 15px;
+}
 
 /* Nav bar on screen with more than 800 pixel width */
 @media screen and (min-width: 300px) {
@@ -521,3 +603,33 @@ nav span:hover {
     background-image: radial-gradient(rgba(250,250,250,0) 2%, black 1%, black);
     display: none; */
 }
+
+/* ------- THIS IS NEW ------- */
+/* .carousel {
+    position:relative;
+    height: 500px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.carousel__image {
+    width: 100%
+}
+
+.carousel__track-container {
+    background: green;
+    padding: 10px;
+}
+
+.carousel__track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.carousel__slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+} */
