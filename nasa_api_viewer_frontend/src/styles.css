@@ -81,16 +81,16 @@
 /* h1{    
     text-align: center;
     color: var(--offwhite);
-    font-size: 60px;}
+    font-size: 60px;} */
 
 h2{
     text-align: center;
     color: var(--offwhite);
     font-size: 40px;
 }
-h3{
+/* h3{
     text-align: center;
-} */
+}  */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -215,6 +215,12 @@ button {
 
 .image-card {
     padding-bottom: 60px;
+}
+
+.center-form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Mars Weather Formatting */
