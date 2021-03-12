@@ -80,9 +80,6 @@
     border-style: solid; */
     margin-left: auto;
     margin-right: auto;
-<<<<<<< HEAD
-}
-=======
     box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.2);}
 
 #walkthrough_btn {
@@ -124,31 +121,16 @@
     inherits: false;
   }
 
-/* h1{    
-    text-align: center;
-    color: var(--offwhite);
-    font-size: 60px;} */
-
->>>>>>> carousel
 h2{
     text-align: center;
     color: var(--offwhite);
     font-size: 40px;
     padding: 20px;
 }
-<<<<<<< HEAD
-/* h1{    
-    text-align: center;
-    color: var(--offwhite);
-    font-size: 60px;}
-
 
 h3{
-=======
-/* h3{
->>>>>>> carousel
     text-align: center;
-}  */
+} 
 
 *, *::before, *::after {
     box-sizing: border-box;
