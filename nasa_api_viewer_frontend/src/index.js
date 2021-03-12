@@ -217,7 +217,10 @@ function fetchNasaImages(searchTerm="nebula"){
         user.images.forEach(image => nasaIdArray.push(image.nasa_id))
 
         fetch(NASA_URL+searchTerm).then(res => res.json())
-        .then(nasaImages => nasaImages.collection.items.forEach(nasaImage => renderNasaImages(nasaImage, nasaIdArray)))
+        .then(nasaImages => nasaImages.collection.items.forEach(nasaImage => {
+            renderNasaImages(nasaImage, nasaIdArray)
+            document.getElementById('nasa-image-search').reset()
+        }))
     })
     
 }
@@ -311,10 +314,10 @@ function unsaveImage(img){
     
     fetch("http://localhost:3000/userimages", reqObj)
     .then().then(_=>{
-        
+        // const userId = sessionStorage.getItem('id')
         const nasaImageCard = document.getElementById(image.nasa_id)
         nasaImageCard.querySelector('button').style.display = "block"
-        const userImageCard = document.getElementById(sessionStorage.id+"_"+image.nasa_id)
+        const userImageCard = document.getElementById(sessionStorage.getItem('id')+"_"+image.nasa_id)
         plusSlides(0)
         userImageCard.remove()    
     })
@@ -354,7 +357,7 @@ function renderUserImages(image){
     card.classList = 'user-image-card', 'fade'
     
     const nasaImg = document.createElement('img')
-        nasaImg.classList.add('space-pic', 'saved-pic')
+        nasaImg.className = 'space-pic'
         nasaImg.src = image.links[0].href
     
     const nasaTitle = document.createElement('div')

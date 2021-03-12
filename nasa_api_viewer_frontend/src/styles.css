@@ -187,7 +187,6 @@ button {
 .prev, .next {
     cursor: pointer;
     position: absolute; 
-    /* text-align: center; */
     top: 30%;
     transform: translateY(-50%);
     width: auto;
@@ -202,7 +201,6 @@ button {
   }
   
 .next {
-    /* right: 100px; */
     right: 15%;
 }
 .prev {
@@ -272,13 +270,10 @@ button {
 .center-form {
     justify-content: center;
     display: block;
-    /* margin-left: auto;
-    margin-right: auto; */
 }
 
 /* Mars Weather Formatting */
 .mars_grid_container{
-    /* background-image: url("https://images-assets.nasa.gov/image/PIA19164/PIA19164~orig.jpg"); */
     display: grid;
     grid:
     'title title title title title'
@@ -328,14 +323,7 @@ header {
     position: fixed;
     z-index: 999;
     width: 100%;
-    /* padding: 100px; */
 }
-
-/* .logo {
-    margin: 0;
-    spacing is determined by spacing and this element determines the
-    height of the nav bar 
-}*/
 
 .nav-toggle {
     display: none;
@@ -438,9 +426,9 @@ nav span:hover {
 .dropdown_content > li{
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: 18px;
+    font-size: 24px;
     text-align: center;
-    width: 256px;
+    width: 509px;
   }
   .dropdown_content > li::before {
     content: '';
@@ -461,6 +449,7 @@ nav span:hover {
 
 .new_group_form {
     padding-top: 15px;
+    font-size: 20px;
 }
 
 /* Nav bar on screen with more than 800 pixel width */
@@ -472,23 +461,16 @@ nav span:hover {
         display: grid;
         grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
     }
-    /* .logo {
-        grid-column: 2 / 3;
-    } */
+
     nav {
         all: unset;
         grid-column: 2 / 4;
         display: flex;
-        /* justify-content: flex-end; */
         align-items: center;
         justify-content: center;
     }
     nav ul {
         display: none;
-        /* display: none; */
-        /* text-align: center; */
-        /* justify-content: flex-end; */
-        
     }
     nav li {
         margin-left: 2em;
@@ -580,52 +562,5 @@ nav span:hover {
     left: 20%;
     font-size: 60px;
     z-index: 1001;
-
 }  
 
-#hole {
-    height:100%;
-    position:relative;        /*This section centers your element*/
-    left:50%;
-    /* margin-left:-800px;        Half the width of the image */
-    z-index:1000;            /*This part puts it behind everything, not needed if you aren't making a background*/
-    background-image: radial-gradient(rgb(250, 250, 250) 2%, black 1%, black);
-    position: fixed;
-    cursor: pointer;
-    /* bottom: 300%;
-    left: 550%; */
-    /* width: 1000%;
-    height: 1000%;
-    background-image: radial-gradient(rgba(250,250,250,0) 2%, black 1%, black);
-    display: none; */
-}
-
-/* ------- THIS IS NEW ------- */
-/* .carousel {
-    position:relative;
-    height: 500px;
-    width: 80%;
-    margin: 0 auto;
-}
-
-.carousel__image {
-    width: 100%
-}
-
-.carousel__track-container {
-    background: green;
-    padding: 10px;
-}
-
-.carousel__track {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.carousel__slide {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-} */
