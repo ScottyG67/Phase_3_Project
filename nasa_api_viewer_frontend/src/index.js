@@ -5,7 +5,7 @@ const IMAGES_URL = `${BASE_URL}images/`
 const WEATHER_URL = `${BASE_URL}weathers/`
 const NASA_API_KEY = "nOK6nJhZT8gEU6dAhgYrHVQfki9F76TqYM1PTuNN"
 
-
+// ----------- Initialize ----------- //
 document.addEventListener("DOMContentLoaded", ()=>{
     
     initializeNavigation()
@@ -28,7 +28,7 @@ function fetchUserList() {
      users.forEach(renderUsersList)})
 }
 
-// User / Interest group functions
+// ----------- Group (user) ----------- //
 function renderUsersList(user){
     const userList = document.querySelector('.dropdown_content')
     const userItem = document.createElement('li')
@@ -160,7 +160,7 @@ function apiToggle(event){
     })
 }
 
-// Mars Weather
+// ----------- Mars Weather ----------- //
 
 function fetchWeekWeather() {
     fetch(WEATHER_URL).then(res=>res.json()).then(weekWeather => {
@@ -193,7 +193,7 @@ function renderWeather(dayWeather) {
         weatherGrid.appendChild(weatherCard)
 }
 
-// APOD
+// ----------- APOD ----------- //
 
 function apodFetch(){
     fetch("https://api.nasa.gov/planetary/apod?api_key="+NASA_API_KEY).then(res =>res.json()).then(img => renderApod(img))
@@ -208,9 +208,9 @@ function renderApod(img){
 }
 
 
-// NASA Image Library
+// ----------- NASA Image Library ----------- //
 
-function fetchNasaImages(searchTerm="nebula"){
+function fetchNasaImages(searchTerm="nebula") {
     let nasaIdArray = []
     //get array of currently saved image ids for logged in user
     fetch(USERS_URL+sessionStorage.getItem("id")).then(res => res.json()).then(user => {
@@ -224,7 +224,6 @@ function fetchNasaImages(searchTerm="nebula"){
     })
     
 }
-
 
 function renderNasaImages(nasaImage,nasaIdArray) {
     
@@ -335,7 +334,7 @@ function searchNasaApi(event) {
     fetchNasaImages(search)
 }
 
-// Display User Saved Images
+// -----------Display User Saved Images ----------- //
 
 function fetchUserImages() {
     const userId = sessionStorage.getItem("id")
@@ -380,7 +379,7 @@ function renderUserImages(image){
     userImageContainer.appendChild(card)
 }
 
-// Slide Show Functionality //
+// -----------Slide Show Functionality ----------- //
 let slideIndex = 1
 let slideChangeTimeout
 
@@ -407,7 +406,7 @@ function showSlides() {
   }
 
 
-  // New Group
+// ----------- New Group ----------- //
 
   function newGroup (event) {
       event.preventDefault()
@@ -626,7 +625,7 @@ function walkThrough () {
     }
 }
 
-//   jquery
+// ----------- Drag and Drop  ----------- //
 $( function() {
     $( "#nasa-images" ).sortable();
     $( "#nasa-images" ).disableSelection();

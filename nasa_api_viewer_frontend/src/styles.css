@@ -514,7 +514,7 @@ nav span:hover {
     left: 0%;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.7);
     z-index: 1000;
     cursor: pointer;
   }
@@ -527,7 +527,7 @@ nav span:hover {
     left: 25%;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.7);
     z-index: 1000;
     cursor: pointer;
   }
@@ -540,7 +540,7 @@ nav span:hover {
     left: 75%;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.7);
     z-index: 1000;
     cursor: pointer;
 }
@@ -553,7 +553,7 @@ nav span:hover {
     left: 80%;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.7);
     z-index: 1000;
     cursor: pointer;
 }
@@ -561,7 +561,7 @@ nav span:hover {
     display: none;
     position:absolute;
     top: 30%;
-    left: 20%;
+    left: 16%;
     font-size: 60px;
     z-index: 1001;
 }  
